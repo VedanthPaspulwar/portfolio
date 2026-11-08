@@ -552,7 +552,7 @@
       position: relative;
       z-index: 25;
       width: 100%;
-      min-height: 560vh;
+      min-height: 480vh;
       pointer-events: auto;
     }
 
@@ -1137,7 +1137,7 @@
     }
 
     .scroll-buffer {
-      height: 45vh;
+      height: 14vh;
     }
 
     /* =========================================================
@@ -1955,7 +1955,158 @@
       font-size: 0.68rem;
     }
 
+    /* =========================================================
+       FLAGSHIP PROJECTS SHOWCASE (Frame 150-240 Content)
+       ========================================================= */
+    .flagship-projects-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .flagship-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 4px 6px;
+    }
+
+    .flagship-title {
+      font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin: 4px 0 0;
+    }
+
+    .flagship-title span {
+      color: #00f5a0;
+    }
+
+    .flagship-sub {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 380px;
+      line-height: 1.5;
+      text-align: right;
+      margin: 0;
+    }
+
+    .flagship-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      width: 100%;
+    }
+
+    .flagship-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flagship-card:hover {
+      border-color: rgba(0, 245, 160, 0.38);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .flagship-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .flagship-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: #00d9f5;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .flagship-card-metric {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #00f5a0;
+      background: rgba(0, 245, 160, 0.08);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 245, 160, 0.2);
+    }
+
+    .flagship-card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .flagship-card-desc {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.58);
+      line-height: 1.55;
+      margin: 0 0 18px;
+    }
+
+    .flagship-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .flagship-tag-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      color: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .flagship-card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #a6ff00;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+      margin-top: auto;
+    }
+
+    .flagship-card-action:hover {
+      gap: 9px;
+      text-decoration: underline;
+    }
+
     @media (max-width: 900px) {
+      .flagship-grid {
+        grid-template-columns: 1fr;
+      }
+      .flagship-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .flagship-sub {
+        text-align: left;
+      }
       .amber-showcase-header {
         flex-direction: column;
         align-items: flex-start;
@@ -2624,6 +2775,119 @@
                 <div class="phone-submit-orb">→</div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3.8: Flagship Projects & Engineering Artifacts Deck (Frame 150-240 Content) -->
+      <div class="flagship-projects-section">
+        <div class="flagship-header-row">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #00f5a0; letter-spacing: 0.1em; text-transform: uppercase;">
+              // Core Repositories &amp; Artifacts
+            </div>
+            <h3 class="flagship-title">Flagship <span>Engineering Projects</span></h3>
+          </div>
+          <p class="flagship-sub">
+            High-performance C++ systems, algorithmic engines, and responsive web applications.
+          </p>
+        </div>
+
+        <div class="flagship-grid">
+          <!-- Project 1 -->
+          <div class="flagship-card">
+            <div>
+              <div class="flagship-card-meta">
+                <span class="flagship-card-tag">Systems &bull; Algorithms</span>
+                <span class="flagship-card-metric">O((V+E) log V)</span>
+              </div>
+              <h4 class="flagship-card-title">C++ Graph &amp; Pathfinding Engine</h4>
+              <p class="flagship-card-desc">
+                High-performance grid traversal implementing Dijkstra, A*, and Bidirectional search with dynamic obstacle recalculation and zero external dependencies.
+              </p>
+              <div class="flagship-tags-row">
+                <span class="flagship-tag-pill">C++20</span>
+                <span class="flagship-tag-pill">Graph Theory</span>
+                <span class="flagship-tag-pill">Priority Queue</span>
+                <span class="flagship-tag-pill">STL</span>
+              </div>
+            </div>
+            <a href="https://github.com/VedanthPaspulwar/portfolio.git" target="_blank" rel="noopener noreferrer" class="flagship-card-action">
+              <span>Inspect Source Repository</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="flagship-card">
+            <div>
+              <div class="flagship-card-meta">
+                <span class="flagship-card-tag">Low-Level &bull; Memory</span>
+                <span class="flagship-card-metric">0B Heap Leaks</span>
+              </div>
+              <h4 class="flagship-card-title">Custom POSIX Slab Allocator</h4>
+              <p class="flagship-card-desc">
+                High-throughput memory manager featuring segregated free-list pools, boundary tag coalescing, and rigorous Valgrind/ASan verification.
+              </p>
+              <div class="flagship-tags-row">
+                <span class="flagship-tag-pill">C / C++</span>
+                <span class="flagship-tag-pill">Memory Pools</span>
+                <span class="flagship-tag-pill">POSIX</span>
+                <span class="flagship-tag-pill">Valgrind</span>
+              </div>
+            </div>
+            <a href="https://github.com/VedanthPaspulwar/portfolio.git" target="_blank" rel="noopener noreferrer" class="flagship-card-action">
+              <span>Inspect Source Repository</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="flagship-card">
+            <div>
+              <div class="flagship-card-meta">
+                <span class="flagship-card-tag">Frontend &bull; Motion</span>
+                <span class="flagship-card-metric">60 FPS Fluid</span>
+              </div>
+              <h4 class="flagship-card-title">Scroll-Scrubbed Canvas Engine</h4>
+              <p class="flagship-card-desc">
+                240-frame interactive 3D canvas pipeline featuring sub-pixel device pixel ratio rendering, edge feathering dissolve, and inertial velocity lerping.
+              </p>
+              <div class="flagship-tags-row">
+                <span class="flagship-tag-pill">HTML5 Canvas</span>
+                <span class="flagship-tag-pill">JavaScript</span>
+                <span class="flagship-tag-pill">Tailwind CSS</span>
+                <span class="flagship-tag-pill">Motion</span>
+              </div>
+            </div>
+            <a href="projects.html" class="flagship-card-action">
+              <span>Live Interactive View</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="flagship-card">
+            <div>
+              <div class="flagship-card-meta">
+                <span class="flagship-card-tag">Fullstack &bull; Hackathon</span>
+                <span class="flagship-card-metric">48h Sprint MVP</span>
+              </div>
+              <h4 class="flagship-card-title">Autonomous Agent Telemetry Hub</h4>
+              <p class="flagship-card-desc">
+                Real-time WebSocket cluster dashboard tracking subagent health, concurrent process memory bounds, and responsive operational dispatch.
+              </p>
+              <div class="flagship-tags-row">
+                <span class="flagship-tag-pill">Node.js</span>
+                <span class="flagship-tag-pill">WebSockets</span>
+                <span class="flagship-tag-pill">Tailwind CSS</span>
+                <span class="flagship-tag-pill">APIs</span>
+              </div>
+            </div>
+            <a href="https://github.com/VedanthPaspulwar/portfolio.git" target="_blank" rel="noopener noreferrer" class="flagship-card-action">
+              <span>Inspect Source Repository</span>
+              <span>&rarr;</span>
+            </a>
           </div>
         </div>
       </div>
