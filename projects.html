@@ -552,7 +552,7 @@
       position: relative;
       z-index: 25;
       width: 100%;
-      min-height: 480vh;
+      min-height: 560vh;
       pointer-events: auto;
     }
 
@@ -1669,7 +1669,305 @@
       }
     }
 
+    /* =========================================================
+       AMBER MOBILE CLIENT SHOWCASE (Reference Mockup)
+       ========================================================= */
+    .amber-mobile-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .amber-showcase-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 4px 6px;
+    }
+
+    .amber-showcase-title {
+      font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin: 4px 0 0;
+    }
+
+    .amber-showcase-title span {
+      color: #ff8c5a;
+    }
+
+    .amber-showcase-sub {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 380px;
+      line-height: 1.5;
+      text-align: right;
+      margin: 0;
+    }
+
+    .phones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    /* Individual Phone Device Shell */
+    .phone-device {
+      border-radius: 36px;
+      background: radial-gradient(ellipse at 50% 30%, rgba(225, 80, 20, 0.65) 0%, rgba(140, 45, 10, 0.42) 45%, rgba(18, 12, 13, 0.98) 85%);
+      background-color: #120b0d;
+      border: 1.5px solid rgba(255, 130, 60, 0.32);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 24px rgba(220, 75, 15, 0.18);
+      overflow: hidden;
+      padding: 14px 16px 20px;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .phone-device:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 140, 70, 0.55);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(240, 90, 25, 0.3);
+    }
+
+    /* Top Notch & Status */
+    .phone-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 2px 8px 12px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .dynamic-island {
+      width: 74px;
+      height: 18px;
+      border-radius: 20px;
+      background: #000000;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .phone-icons-right {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.65rem;
+    }
+
+    /* Phone 1: Prompt & Question Screen */
+    .phone-avatar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .phone-user-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .phone-main-q {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+    }
+
+    .phone-chips-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .phone-action-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.74rem;
+      color: #ffffff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.2s ease;
+    }
+
+    .phone-action-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .phone-input-bar {
+      margin-top: auto;
+      background: rgba(15, 11, 12, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      padding: 6px 6px 6px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .phone-submit-orb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ff8c36 35%, #d94508 100%);
+      box-shadow: 0 0 12px rgba(255, 110, 30, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    /* Phone 2: Amber Sphere & Orb Engine */
+    .phone-orb-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      padding: 10px 6px;
+      flex: 1;
+    }
+
+    .phone-top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #ff8c5a;
+      background: rgba(255, 110, 30, 0.12);
+      border: 1px solid rgba(255, 110, 30, 0.25);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .amber-3d-sphere {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 32%, #fff3dc 0%, #ff9533 26%, #d84506 60%, #5e1400 100%);
+      box-shadow: 0 0 50px rgba(255, 110, 20, 0.65), inset 0 0 25px rgba(255, 255, 255, 0.45);
+      margin: 0 auto 24px;
+      animation: sphereFloat 4s infinite ease-in-out;
+    }
+
+    @keyframes sphereFloat {
+      0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 0 50px rgba(255, 110, 20, 0.65); }
+      50% { transform: translateY(-6px) scale(1.03); box-shadow: 0 0 65px rgba(255, 110, 20, 0.85); }
+    }
+
+    .phone-orb-desc {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+      max-width: 220px;
+      margin: 0 0 24px;
+    }
+
+    .phone-orb-controller {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .phone-large-orb-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ff903b 30%, #ce3800 100%);
+      box-shadow: 0 0 24px rgba(255, 110, 20, 0.85);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Phone 3: Chat / Interactive Feed */
+    .phone-chat-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-top: 10px;
+      flex: 1;
+    }
+
+    .chat-bubble-user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #ff8c36 0%, #e04a08 100%);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 10px 14px;
+      border-radius: 16px 16px 4px 16px;
+      max-width: 85%;
+      box-shadow: 0 4px 14px rgba(220, 75, 15, 0.3);
+    }
+
+    .chat-bubble-system {
+      align-self: flex-start;
+      background: rgba(15, 11, 12, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.71rem;
+      line-height: 1.45;
+      padding: 10px 14px;
+      border-radius: 16px 16px 16px 4px;
+      max-width: 88%;
+    }
+
+    .chat-bubble-system code {
+      font-family: 'JetBrains Mono', monospace;
+      color: #00f5a0;
+      font-size: 0.68rem;
+    }
+
     @media (max-width: 900px) {
+      .amber-showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .amber-showcase-sub {
+        text-align: left;
+      }
+      .phones-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin: 0 auto;
+      }
       .radar-hero-grid {
         grid-template-columns: 1fr;
         padding: 24px 20px;
@@ -2211,6 +2509,119 @@
                   <span class="os-mini-sub">60 FPS Render</span>
                 </div>
                 <span class="os-mini-right">14ms <small style="color:#00d9f5;">✦</small></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3.5: Amber Mobile Client Showcase (Reference Mockup) -->
+      <div class="amber-mobile-showcase">
+        <div class="amber-showcase-header">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #ff8c5a; letter-spacing: 0.1em; text-transform: uppercase;">
+              // Mobile Co-Pilot Client
+            </div>
+            <h3 class="amber-showcase-title">Pocket <span>Systems Architecture</span></h3>
+          </div>
+          <p class="amber-showcase-sub">
+            Real-time algorithmic dispatch &amp; autonomous agent telemetry on mobile devices.
+          </p>
+        </div>
+
+        <div class="phones-grid">
+          <!-- Phone 1: Prompt & Question Screen -->
+          <div class="phone-device">
+            <div class="phone-status-row">
+              <span>9:41</span>
+              <div class="dynamic-island"></div>
+              <div class="phone-icons-right">5G 100%</div>
+            </div>
+
+            <div style="flex: 1; display: flex; flex-direction: column;">
+              <div class="phone-avatar-row">
+                <div class="phone-user-chip">
+                  <span>⚡</span>
+                  <span>Vedanth // CSE</span>
+                </div>
+                <div style="color: rgba(255,255,255,0.4); font-size: 0.8rem;">•••</div>
+              </div>
+
+              <h4 class="phone-main-q">What are we<br>building today?</h4>
+
+              <div class="phone-chips-grid">
+                <div class="phone-action-card">
+                  <span>⚡ Dijkstra Graph Engine</span>
+                  <span style="color:#ff8c5a;">↗</span>
+                </div>
+                <div class="phone-action-card">
+                  <span>⚙️ POSIX Memory Allocator</span>
+                  <span style="color:#ff8c5a;">↗</span>
+                </div>
+                <div class="phone-action-card">
+                  <span>🎨 Responsive Tailwind UI</span>
+                  <span style="color:#ff8c5a;">↗</span>
+                </div>
+              </div>
+
+              <div class="phone-input-bar">
+                <span>Ask or dispatch an agent...</span>
+                <div class="phone-submit-orb">↑</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone 2: 3D Amber Sphere & Dispatch Screen -->
+          <div class="phone-device">
+            <div class="phone-status-row">
+              <span>9:41</span>
+              <div class="dynamic-island"></div>
+              <div class="phone-icons-right">5G 100%</div>
+            </div>
+
+            <div class="phone-orb-body">
+              <span class="phone-top-pill">Live Execution</span>
+              <!-- 3D Glowing Amber Sphere -->
+              <div class="amber-3d-sphere"></div>
+              <p class="phone-orb-desc">Deploy an autonomous C++ worker to monitor memory fragmentation. Zero leak verified.</p>
+              
+              <div class="phone-orb-controller">
+                <button class="phone-large-orb-btn" aria-label="Dispatch Worker"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone 3: Chat / Execution Feed -->
+          <div class="phone-device">
+            <div class="phone-status-row">
+              <span>9:41</span>
+              <div class="dynamic-island"></div>
+              <div class="phone-icons-right">5G 100%</div>
+            </div>
+
+            <div style="flex: 1; display: flex; flex-direction: column;">
+              <div class="phone-avatar-row" style="margin-bottom: 14px;">
+                <span class="phone-top-pill" style="margin-bottom: 0;">Telemetry Terminal</span>
+              </div>
+
+              <div class="phone-chat-feed">
+                <div class="chat-bubble-user">
+                  Deploy autonomous pathfinding engine to benchmark dense graphs.
+                </div>
+                <div class="chat-bubble-system">
+                  Initializing C++ Dijkstra solver. Heap allocated: <code>0B</code> overhead.
+                </div>
+                <div class="chat-bubble-user">
+                  Bound worst-case to O(log N).
+                </div>
+                <div class="chat-bubble-system">
+                  Binary heap priority queue loaded. <code>60 FPS</code> verified.
+                </div>
+              </div>
+
+              <div class="phone-input-bar" style="margin-top: 18px;">
+                <span>Send instruction...</span>
+                <div class="phone-submit-orb">→</div>
               </div>
             </div>
           </div>
