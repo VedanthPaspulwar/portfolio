@@ -1,0 +1,20 @@
+# Scratch and test files
+test_*
+sample_*
+check_*
+*_test.jpg
+preview_grid.jpg
+screen_blend_*.jpg
+seamless_blend_*.jpg
+frame_*.jpg
+desktop_cover_*.jpg
+broken-glass.jpg
+contact-bg.jpg
+block*.jpg
+hobby-frames/
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

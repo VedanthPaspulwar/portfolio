@@ -1,0 +1,2526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio &amp; Systems — Vedanth | Frontend &amp; C++ Developer</title>
+  <meta name="description" content="Portfolio of Vedanth — 2nd Year B.Tech CSE Undergrad, C/C++ Systems & Tailwind CSS Web Developer.">
+  <meta name="theme-color" content="#0f0b0c">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: #0f0b0c;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      width: 100%;
+      background-color: #0f0b0c;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Minimal sleek scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0b0c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #251e20;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a6ff00;
+    }
+
+    /* Fixed Canvas Animation Layer (Full Page Viewport) */
+    #stage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0f0b0c;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Top Sticky Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 100;
+      transition: background 0.3s ease;
+    }
+
+    .brand-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-logo span {
+      color: #a6ff00;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: #e2d8e0;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease, opacity 0.2s ease;
+      opacity: 0.9;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      opacity: 1;
+    }
+
+    .nav-link.active {
+      color: #a6ff00;
+      opacity: 1;
+      font-weight: 700;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-back-home:hover {
+      background: rgba(166, 255, 0, 0.12);
+      border-color: #a6ff00;
+      color: #a6ff00;
+      transform: translateX(-2px);
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      color: #0f0b0c;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 5px 6px 5px 18px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(166, 255, 0, 0.3);
+    }
+
+    .btn-contact .arrow-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #a6ff00;
+      color: #0f0b0c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+      transition: transform 0.2s ease;
+    }
+
+    /* Scroll Height Container to Drive 240 Frames */
+    .scroll-container {
+      position: relative;
+      width: 100%;
+      height: 380vh;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* =========================================================
+       GRAPHIC SELECTION HERO BANNER (Reference Design)
+       ========================================================= */
+    .graphic-hero-wrapper {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      width: 100%;
+      max-width: 960px;
+      padding: 0 24px;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    /* Selection Box with Dashed Border (Figma/Photoshop UI) */
+    .selection-box {
+      position: relative;
+      border: 1.5px dashed rgba(255, 255, 255, 0.45);
+      padding: 24px 44px 34px;
+      background: transparent;
+      display: inline-block;
+      user-select: none;
+    }
+
+    /* 8 Anchor Handle Points */
+    .anchor-handle {
+      width: 9px;
+      height: 9px;
+      background: #ffffff;
+      border: 1px solid #000000;
+      position: absolute;
+      z-index: 3;
+    }
+
+    .handle-tl { top: -5px; left: -5px; }
+    .handle-tc { top: -5px; left: 50%; transform: translateX(-50%); }
+    .handle-tr { top: -5px; right: -5px; }
+    .handle-ml { top: 50%; left: -5px; transform: translateY(-50%); }
+    .handle-mr { top: 50%; right: -5px; transform: translateY(-50%); }
+    .handle-bl { bottom: -5px; left: -5px; }
+    .handle-bc { bottom: -5px; left: 50%; transform: translateX(-50%); }
+    .handle-br { bottom: -5px; right: -5px; }
+
+    /* Corner Resize Cursor Pointer */
+    .cursor-pointer {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      z-index: 5;
+      transform: rotate(-10deg);
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8));
+      pointer-events: none;
+    }
+
+    /* Inner Graphic Content */
+    .graphic-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .eyebrow-tag {
+      font-size: clamp(0.95rem, 2vw, 1.35rem);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 2px;
+      padding-left: 4px;
+    }
+
+    .display-title-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .display-title {
+      font-size: clamp(4.5rem, 13vw, 9.5rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      margin: 0;
+      text-transform: capitalize;
+    }
+
+    .display-title .text-white {
+      color: #ffffff;
+    }
+
+    .display-title .text-lime {
+      color: #a6ff00;
+      text-shadow: 0 0 45px rgba(166, 255, 0, 0.45);
+    }
+
+    /* Signature Script Overlay */
+    .signature-wrap {
+      position: absolute;
+      bottom: -14px;
+      right: -10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transform: rotate(-6deg);
+      pointer-events: none;
+    }
+
+    .signature-name {
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 0.85;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+      letter-spacing: 0.02em;
+    }
+
+    .signature-swoosh {
+      width: clamp(90px, 15vw, 160px);
+      height: 18px;
+      margin-top: -4px;
+      filter: drop-shadow(0 0 6px #a6ff00);
+    }
+
+    /* Generative / AI Prompt Floating Bar */
+    .prompt-bar {
+      margin-top: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 10px 7px 16px;
+      border-radius: 12px;
+      background: rgba(20, 16, 17, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(166, 255, 0, 0.1);
+      max-width: 90%;
+    }
+
+    .prompt-input-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 8px 14px;
+      min-width: 320px;
+    }
+
+    .prompt-sparkle {
+      color: #a6ff00;
+      font-size: 0.85rem;
+    }
+
+    .prompt-text {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .prompt-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prompt-dots-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      transition: all 0.2s ease;
+    }
+
+    .prompt-dots-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .prompt-btn-cancel {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      font-family: inherit;
+    }
+
+    .prompt-btn-cancel:hover {
+      color: #ffffff;
+    }
+
+    .prompt-btn-generate {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1e191a;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .prompt-btn-generate:hover {
+      background: #2a2224;
+      border-color: #a6ff00;
+      color: #a6ff00;
+      box-shadow: 0 0 15px rgba(166, 255, 0, 0.25);
+      transform: translateY(-1px);
+    }
+
+    /* Floating UI Elements */
+    .floating-ui-wrap {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      pointer-events: auto;
+    }
+
+    .frame-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: rgba(15, 11, 12, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .frame-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #a6ff00;
+      box-shadow: 0 0 8px #a6ff00;
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: opacity 0.4s ease;
+    }
+
+    .hint-arrow {
+      color: #a6ff00;
+      font-size: 0.9rem;
+      animation: bounceArrow 1.8s infinite ease-in-out;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+
+    /* Subtle top scroll progress indicator */
+    .scroll-progress-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, #ffffff, #a6ff00);
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    @media (max-width: 992px) {
+      .navbar {
+        width: calc(100% - 32px);
+        padding: 12px 20px;
+      }
+      .nav-menu {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .selection-box {
+        padding: 16px 20px 24px;
+      }
+      .prompt-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 10px;
+      }
+      .prompt-input-box {
+        min-width: 100%;
+      }
+      .prompt-actions {
+        justify-content: flex-end;
+      }
+    }
+
+    /* =========================================================
+       PRECISION MINIMALIST SECTION (20% Content Deck)
+       ========================================================= */
+    .scroll-track {
+      position: relative;
+      z-index: 25;
+      width: 100%;
+      min-height: 480vh;
+      pointer-events: auto;
+    }
+
+    .precision-section {
+      position: relative;
+      width: 100%;
+      max-width: 980px;
+      margin: 110vh auto 40px;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Minimalist Top Header Bar */
+    .prec-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .prec-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #00f5a0;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .prec-mini-title {
+      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin: 4px 0 0;
+      letter-spacing: -0.01em;
+    }
+
+    .prec-header-right {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* =========================================================
+       INTELLIGENT FLOW WINDOW CARD (Reference Mockup Design)
+       ========================================================= */
+    .flow-window-card {
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.04) 0%, rgba(15, 11, 12, 0.94) 50%, rgba(0, 245, 160, 0.03) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.3s ease;
+    }
+
+    .flow-window-card:hover {
+      border-color: rgba(0, 245, 160, 0.35);
+    }
+
+    /* Inside Top Navigation Bar */
+    .flow-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.015);
+      position: relative;
+      z-index: 4;
+    }
+
+    .flow-brand-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .flow-brand-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid #00f5a0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: #00f5a0;
+      box-shadow: 0 0 8px rgba(0, 245, 160, 0.4);
+    }
+
+    .flow-nav-items {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .flow-nav-item a {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .flow-nav-item a:hover {
+      color: #ffffff;
+    }
+
+    .flow-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flow-search-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 0.72rem;
+      font-family: inherit;
+    }
+
+    .flow-action-pill-btn {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: #181314;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .flow-action-pill-btn:hover {
+      background: #251d1e;
+      border-color: #00f5a0;
+      color: #00f5a0;
+    }
+
+    /* Main Body of Flow Window */
+    .flow-body {
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 24px 34px;
+      position: relative;
+    }
+
+    /* Background Liquid Metallic Waves (Pure SVG) */
+    .flow-bg-waves {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.35;
+      overflow: hidden;
+    }
+
+    .flow-title {
+      font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+      margin: 0 0 10px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 2;
+    }
+
+    .flow-subtitle {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.58);
+      max-width: 440px;
+      line-height: 1.55;
+      margin: 0 0 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Signature Glowing Action Button (CATDA-style pill from reference) */
+    .flow-glow-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 34px;
+      border-radius: 9999px;
+      background: rgba(0, 245, 160, 0.08);
+      border: 1.5px solid #00f5a0;
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 0 28px rgba(0, 245, 160, 0.45), inset 0 0 16px rgba(0, 245, 160, 0.22);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    .flow-glow-btn:hover {
+      background: rgba(0, 245, 160, 0.16);
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 245, 160, 0.7), inset 0 0 22px rgba(0, 245, 160, 0.35);
+      color: #ffffff;
+    }
+
+    /* Flow Window Bottom HUD Elements */
+    .flow-bottom-hud {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 24px 20px;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Bottom-Left Chart HUD */
+    .flow-chart-hud {
+      background: rgba(15, 11, 12, 0.75);
+      border: 1px solid rgba(0, 245, 160, 0.22);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 150px;
+    }
+
+    .flow-chart-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .flow-chart-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .flow-chart-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #00f5a0;
+    }
+
+    /* Live Animated Bar Equalizer */
+    .flow-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 28px;
+    }
+
+    .flow-bar {
+      flex: 1;
+      width: 6px;
+      background: #00f5a0;
+      border-radius: 2px;
+      animation: barPulse 2s infinite ease-in-out;
+    }
+
+    .flow-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+    .flow-bar:nth-child(2) { height: 75%; animation-delay: 0.3s; }
+    .flow-bar:nth-child(3) { height: 100%; animation-delay: 0.5s; }
+    .flow-bar:nth-child(4) { height: 55%; animation-delay: 0.2s; }
+    .flow-bar:nth-child(5) { height: 85%; animation-delay: 0.4s; }
+
+    @keyframes barPulse {
+      0%, 100% { opacity: 0.7; transform: scaleY(0.8); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* Bottom-Right Controller HUD */
+    .flow-ctrl-hud {
+      background: rgba(15, 11, 12, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .flow-ctrl-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00d9f5;
+      box-shadow: 0 0 6px #00d9f5;
+    }
+
+    .flow-ctrl-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.65rem;
+    }
+
+    /* Minimalist Base Card */
+    .prec-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .prec-card:hover {
+      border-color: rgba(0, 245, 160, 0.35);
+    }
+
+    /* 3-Column Radar Hero Grid */
+    .radar-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      align-items: center;
+      padding: 34px 28px;
+      gap: 24px;
+      position: relative;
+    }
+
+    .radar-col {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+    }
+
+    .radar-pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      background: rgba(0, 245, 160, 0.08);
+      border: 1px solid rgba(0, 245, 160, 0.28);
+      color: #00f5a0;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+
+    .radar-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00f5a0;
+      box-shadow: 0 0 8px #00f5a0;
+      animation: pulseGreen 1.8s infinite ease-in-out;
+    }
+
+    .radar-col-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .radar-stat-highlight {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2rem, 3.4vw, 2.7rem);
+      font-weight: 900;
+      color: #a6ff00;
+      line-height: 1.1;
+      margin: 6px 0 4px;
+      letter-spacing: -0.03em;
+    }
+
+    .radar-col-desc {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Center Radar Scope Graphic */
+    .radar-scope-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+    }
+
+    .radar-svg {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      overflow: visible;
+    }
+
+    .radar-sweep-beam {
+      transform-origin: 150px 150px;
+      animation: radarSweep 6s linear infinite;
+    }
+
+    @keyframes radarSweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .radar-reticle-pulse {
+      transform-origin: 150px 150px;
+      animation: reticlePulse 3s infinite ease-in-out;
+    }
+
+    @keyframes reticlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    .radar-hud-readout {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(0, 245, 160, 0.75);
+      letter-spacing: 0.08em;
+      background: rgba(15, 11, 12, 0.85);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 245, 160, 0.2);
+      white-space: nowrap;
+    }
+
+    /* Minimalist 4-Item Pipeline Strip */
+    .mini-pipeline-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 0;
+    }
+
+    .mini-pipe-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 16px 18px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background 0.2s ease;
+    }
+
+    .mini-pipe-item:last-child {
+      border-right: none;
+    }
+
+    .mini-pipe-item:hover {
+      background: rgba(0, 245, 160, 0.03);
+    }
+
+    .mini-pipe-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.35);
+      font-weight: 700;
+    }
+
+    .mini-pipe-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .status-badge.active {
+      background: rgba(0, 245, 160, 0.12);
+      border: 1px solid rgba(0, 245, 160, 0.35);
+      color: #00f5a0;
+    }
+
+    .status-badge.active::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #00f5a0;
+      box-shadow: 0 0 5px #00f5a0;
+    }
+
+    .status-badge.completed {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .status-badge.progress {
+      background: rgba(0, 217, 245, 0.12);
+      border: 1px solid rgba(0, 217, 245, 0.35);
+      color: #00d9f5;
+    }
+
+    .status-badge.progress::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #00d9f5;
+    }
+
+    /* Minimal Bottom Strip */
+    .prec-footer-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 4px 0;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .prec-footer-strip a {
+      color: #a6ff00;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .prec-footer-strip a:hover {
+      text-decoration: underline;
+    }
+
+    .scroll-buffer {
+      height: 45vh;
+    }
+
+    /* =========================================================
+       SYSTEM OS DASHBOARD WINDOW (Reference Mockup)
+       ========================================================= */
+    .os-dash-window {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(15, 11, 12, 0.95) 45%, rgba(0, 217, 245, 0.03) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      transition: border-color 0.3s ease;
+    }
+
+    .os-dash-window:hover {
+      border-color: rgba(0, 217, 245, 0.35);
+    }
+
+    /* Left Vertical Rail */
+    .os-side-rail {
+      width: 58px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.015);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      flex-shrink: 0;
+    }
+
+    .os-rail-brand {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00f5a0;
+      font-size: 0.9rem;
+    }
+
+    .os-rail-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .os-rail-btn {
+      width: 100%;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .os-rail-btn:hover {
+      color: #ffffff;
+    }
+
+    .os-rail-btn.active {
+      color: #ffffff;
+    }
+
+    .os-rail-btn.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 18px;
+      border-radius: 0 3px 3px 0;
+      background: #00f5a0;
+      box-shadow: 0 0 8px #00f5a0;
+    }
+
+    .os-rail-bottom {
+      color: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .os-rail-bottom:hover {
+      color: #ff4d4d;
+    }
+
+    /* Main Area of OS Window */
+    .os-main-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    /* Top Bar */
+    .os-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 26px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .os-user-greeting {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .os-welcome-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .os-user-name {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 2px;
+    }
+
+    .os-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .os-action-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .os-action-circle:hover {
+      background: rgba(255, 255, 255, 0.09);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .os-avatar-pill {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00f5a0, #00d9f5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f0b0c;
+      font-weight: 900;
+      font-size: 0.8rem;
+      box-shadow: 0 0 10px rgba(0, 245, 160, 0.4);
+    }
+
+    /* Dashboard Body Grid */
+    .os-body-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 22px;
+      padding: 26px;
+    }
+
+    /* Left Analytics Panel */
+    .os-analytics-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 290px;
+    }
+
+    .os-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      background: rgba(0, 217, 245, 0.08);
+      border: 1px solid rgba(0, 217, 245, 0.25);
+      color: #00d9f5;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .os-hero-title {
+      font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .os-hero-desc {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.5;
+      margin: 0 0 20px;
+      max-width: 360px;
+    }
+
+    /* Timeline Wave Chart */
+    .os-wave-container {
+      position: relative;
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    .os-timeline-labels {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .os-time-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .os-time-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .os-time-val.target {
+      color: #00f5a0;
+      text-shadow: 0 0 8px rgba(0, 245, 160, 0.6);
+    }
+
+    .os-wave-svg {
+      width: 100%;
+      height: 48px;
+      overflow: visible;
+    }
+
+    .os-days-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      text-align: center;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 6px;
+    }
+
+    .os-days-row span.active {
+      color: #00f5a0;
+      font-weight: 700;
+    }
+
+    /* Right Stack of Status Cards */
+    .os-status-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .os-glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 14px 18px;
+      transition: all 0.2s ease;
+    }
+
+    .os-glass-card:hover {
+      border-color: rgba(0, 245, 160, 0.35);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .os-main-status-card {
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 245, 160, 0.25);
+    }
+
+    .os-loc-pin {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .os-loc-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00f5a0;
+      box-shadow: 0 0 6px #00f5a0;
+    }
+
+    .os-big-temp {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .os-sub-metrics {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .os-sub-metrics span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .os-mini-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 16px;
+    }
+
+    .os-mini-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .os-mini-region {
+      font-size: 0.64rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .os-mini-city {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .os-mini-sub {
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .os-mini-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* =========================================================
+       VEDANTH SUNSET GLOW FOOTER CARD (Reference Mockup)
+       ========================================================= */
+    .vedanth-footer-card {
+      position: relative;
+      width: 100%;
+      border-radius: 26px;
+      background: radial-gradient(ellipse 95% 75% at 50% 120%, rgba(225, 95, 40, 0.52) 0%, rgba(180, 60, 20, 0.28) 45%, rgba(17, 12, 13, 0.98) 78%);
+      background-color: #110c0d;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      padding: 44px 48px 10px;
+      margin-top: 8px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 380px;
+      transition: border-color 0.3s ease;
+    }
+
+    .vedanth-footer-card:hover {
+      border-color: rgba(255, 120, 60, 0.4);
+    }
+
+    .vedanth-footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .vedanth-footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .vedanth-footer-nav a {
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      letter-spacing: -0.01em;
+    }
+
+    .vedanth-footer-nav a:hover {
+      color: #ff8c5a;
+      transform: translateX(4px);
+    }
+
+    .vedanth-footer-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      text-align: right;
+    }
+
+    .vedanth-social-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 4px;
+    }
+
+    .vedanth-social-row a {
+      color: #ffffff;
+      font-size: 1.15rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.85;
+      text-decoration: none;
+    }
+
+    .vedanth-social-row a:hover {
+      color: #ff8c5a;
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .vedanth-contact-detail {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.55;
+    }
+
+    .vedanth-contact-detail a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .vedanth-contact-detail a:hover {
+      color: #ff8c5a;
+      text-decoration: underline;
+    }
+
+    /* Massive Display Typography at bottom */
+    .vedanth-giant-name {
+      font-size: clamp(4.5rem, 14.5vw, 12rem);
+      font-weight: 800;
+      line-height: 0.82;
+      letter-spacing: -0.04em;
+      user-select: none;
+      pointer-events: none;
+      margin-top: 36px;
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 200, 170, 0.16) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .vedanth-footer-card {
+        padding: 30px 24px 8px;
+        min-height: 320px;
+      }
+      .vedanth-footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .vedanth-footer-info {
+        align-items: flex-start;
+        text-align: left;
+      }
+      .vedanth-giant-name {
+        font-size: clamp(3.4rem, 15vw, 6.5rem);
+        margin-top: 24px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .radar-hero-grid {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+        gap: 20px;
+      }
+      .mini-pipeline-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .mini-pipe-item:nth-child(2) {
+        border-right: none;
+      }
+      .mini-pipe-item:nth-child(1),
+      .mini-pipe-item:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .flow-nav-items {
+        display: none;
+      }
+      .os-body-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .mini-pipeline-strip {
+        grid-template-columns: 1fr;
+      }
+      .mini-pipe-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .mini-pipe-item:last-child {
+        border-bottom: none;
+      }
+      .prec-header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .flow-search-pill {
+        display: none;
+      }
+      .flow-bottom-hud {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .os-dash-window {
+        flex-direction: column;
+      }
+      .os-side-rail {
+        width: 100%;
+        height: 50px;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0 16px;
+      }
+      .os-rail-icons {
+        flex-direction: row;
+        width: auto;
+      }
+      .os-rail-btn.active::before {
+        left: 50%;
+        top: auto;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 18px;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+      }
+      .os-top-bar {
+        padding: 12px 16px;
+      }
+      .os-body-grid {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="scroll-progress-line" id="progressBar"></div>
+
+  <!-- Fixed Canvas Animation Layer (Full Page Viewport) -->
+  <div id="stage">
+    <canvas id="view"></canvas>
+  </div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html#home" class="brand-logo">Vedanth<span>.dev</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html#home" class="nav-link">Home</a></li>
+      <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      <li><a href="projects.html" class="nav-link active">Portfolio</a></li>
+      <li><a href="index.html#about" class="nav-link">About</a></li>
+      <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="index.html#home" class="btn-back-home">
+        <span>←</span>
+        <span>Portfolio Home</span>
+      </a>
+      <a href="index.html#contact" class="btn-contact">
+        Get in touch
+        <span class="arrow-badge">→</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Centered Graphic Selection Hero (Reference Design) -->
+  <div class="graphic-hero-wrapper" id="graphicHero">
+    <!-- Dashed Bounding Box with Selection Handles -->
+    <div class="selection-box">
+      <!-- 8 Anchor Points (Photoshop/Figma Style) -->
+      <span class="anchor-handle handle-tl"></span>
+      <span class="anchor-handle handle-tc"></span>
+      <span class="anchor-handle handle-tr"></span>
+      <span class="anchor-handle handle-ml"></span>
+      <span class="anchor-handle handle-mr"></span>
+      <span class="anchor-handle handle-bl"></span>
+      <span class="anchor-handle handle-bc"></span>
+      <span class="anchor-handle handle-br"></span>
+
+      <!-- Inner Typographic Art -->
+      <div class="graphic-content">
+        <div class="eyebrow-tag">Frontend &amp; C++ Developer</div>
+        <div class="display-title-wrap">
+          <h1 class="display-title">
+            <span class="text-white">Port</span><span class="text-lime">folio</span>
+          </h1>
+          <!-- Handwritten Signature Script Overlay -->
+          <div class="signature-wrap">
+            <span class="signature-name">Vedanth</span>
+            <svg class="signature-swoosh" viewBox="0 0 140 22" fill="none">
+              <path d="M4 16 Q 60 2, 136 12" stroke="#a6ff00" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corner Resize Cursor Pointer -->
+      <div class="cursor-pointer" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+          <path d="M4 4l16 5.5-6.5 2.5-2.5 6.5L4 4z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Generative / AI Prompt Floating Bar -->
+    <div class="prompt-bar">
+      <div class="prompt-input-box">
+        <span class="prompt-sparkle">✦</span>
+        <span class="prompt-text" id="promptText">Build high-performance C++ systems &amp; responsive web portfolio</span>
+      </div>
+      <div class="prompt-actions">
+        <button class="prompt-dots-btn" aria-label="More options">•••</button>
+        <button class="prompt-btn-cancel" onclick="resetPrompt()">Cancel</button>
+        <button class="prompt-btn-generate" onclick="triggerGenerate()">
+          <span class="sparkle">✨</span>
+          <span>Generate</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Scroll Track Flowing Over Animation -->
+  <main class="scroll-track" id="scrollTrack">
+
+    <!-- =========================================================
+         PRECISION ARCHITECTURE & METRICS (Minimal 20% Content Deck)
+         ========================================================= -->
+    <section class="precision-section">
+
+      <!-- Minimal Header Bar -->
+      <div class="prec-header-bar">
+        <div>
+          <span class="prec-badge">VEDANTH.SYS // 2026</span>
+          <h2 class="prec-mini-title">Precision Architecture</h2>
+        </div>
+        <div class="prec-header-right">
+          <span>B.Tech CSE &bull; Algorithms &amp; C++</span>
+        </div>
+      </div>
+
+      <!-- Card 0: Intelligent Flow Window (Reference Mockup Design) -->
+      <div class="flow-window-card">
+        <!-- Top Window Nav -->
+        <div class="flow-nav-bar">
+          <div class="flow-brand-tag">
+            <span class="flow-brand-icon">⚡</span>
+            <span>Vedanth.dev / Systems</span>
+          </div>
+          <ul class="flow-nav-items">
+            <li class="flow-nav-item"><a href="#view">Architecture</a></li>
+            <li class="flow-nav-item"><a href="#view">DSA Core</a></li>
+            <li class="flow-nav-item"><a href="#view">Benchmarks</a></li>
+          </ul>
+          <div class="flow-nav-actions">
+            <div class="flow-search-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Search DSA...</span>
+            </div>
+            <a href="index.html#contact" class="flow-action-pill-btn">Live Build</a>
+          </div>
+        </div>
+
+        <!-- Flow Window Centerpiece -->
+        <div class="flow-body">
+          <!-- Fluid Metallic Ambient Wave Paths -->
+          <svg class="flow-bg-waves" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-50 350 C 200 400, 300 120, 500 180 C 700 240, 750 80, 850 60" stroke="url(#waveGrad1)" stroke-width="2"/>
+            <path d="M-50 380 C 180 320, 320 80, 520 150 C 720 220, 800 40, 900 20" stroke="url(#waveGrad2)" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <path d="M-50 280 C 150 200, 380 260, 580 100 C 700 0, 800 140, 850 180" stroke="url(#waveGrad1)" stroke-width="1" stroke-opacity="0.4"/>
+            <defs>
+              <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="#00d9f5" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#a6ff00" stop-opacity="0.1"/>
+              </linearGradient>
+              <linearGradient id="waveGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#00d9f5" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <h3 class="flow-title">Intelligent Flow</h3>
+          <p class="flow-subtitle">Low-latency C++ algorithmic core with responsive modern Tailwind design.</p>
+          <a href="index.html#projects" class="flow-glow-btn">Run Engine</a>
+        </div>
+
+        <!-- Flow Window Bottom HUD -->
+        <div class="flow-bottom-hud">
+          <!-- Bottom Left HUD (Throughput chart) -->
+          <div class="flow-chart-hud">
+            <div class="flow-chart-meta">
+              <span class="flow-chart-lbl">Throughput</span>
+              <span class="flow-chart-val">0.12ms</span>
+            </div>
+            <div class="flow-bars">
+              <span class="flow-bar"></span>
+              <span class="flow-bar"></span>
+              <span class="flow-bar"></span>
+              <span class="flow-bar"></span>
+              <span class="flow-bar"></span>
+            </div>
+          </div>
+
+          <!-- Bottom Right HUD (Controller) -->
+          <div class="flow-ctrl-hud">
+            <span class="flow-ctrl-dot"></span>
+            <span>60 FPS &bull; Alloc: 0B</span>
+            <span class="flow-ctrl-btn">&#9658;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 1: Precision Targeting Scope & Metric Highlights -->
+      <div class="prec-card">
+        <div class="radar-hero-grid">
+          <!-- Left Metric Highlight -->
+          <div class="radar-col">
+            <div class="radar-pill-tag">
+              <span class="radar-pill-dot"></span>
+              <span>Targeted Runtime</span>
+            </div>
+            <h3 class="radar-col-title">Zero Overhead</h3>
+            <div class="radar-stat-highlight">O(log N)</div>
+            <p class="radar-col-desc">Worst-case bounds on tree &amp; graph engines.</p>
+          </div>
+
+          <!-- Center Animated SVG Radar Reticle -->
+          <div class="radar-scope-wrapper">
+            <svg class="radar-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.25"/>
+                  <stop offset="60%" stop-color="#00f5a0" stop-opacity="0.05"/>
+                  <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="sweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+
+              <circle cx="150" cy="150" r="130" fill="url(#radarGlow)"/>
+              <circle cx="150" cy="150" r="130" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+              <circle cx="150" cy="150" r="130" stroke="#00f5a0" stroke-width="1.5" stroke-dasharray="4 20" stroke-opacity="0.6"/>
+              <circle cx="150" cy="150" r="95" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="150" cy="150" r="60" stroke="rgba(0, 245, 160, 0.3)" stroke-width="1"/>
+              <circle cx="150" cy="150" r="28" stroke="rgba(0, 217, 245, 0.45)" stroke-width="1.2"/>
+
+              <line x1="150" y1="10" x2="150" y2="290" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+              <line x1="10" y1="150" x2="290" y2="150" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+
+              <!-- Animated Sweep Beam -->
+              <g class="radar-sweep-beam">
+                <path d="M150 150 L275 110 A130 130 0 0 0 150 20 Z" fill="url(#sweepGrad)"/>
+                <line x1="150" y1="150" x2="275" y2="110" stroke="#00f5a0" stroke-width="1.5" stroke-opacity="0.8"/>
+              </g>
+
+              <!-- Center Pulsing Core Reticle -->
+              <g class="radar-reticle-pulse">
+                <circle cx="150" cy="150" r="10" fill="#0f0b0c" stroke="#00f5a0" stroke-width="2"/>
+                <circle cx="150" cy="150" r="4" fill="#00f5a0"/>
+              </g>
+
+              <text x="160" y="142" fill="#00f5a0" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">TARGET_LOCKED</text>
+              <text x="160" y="162" fill="rgba(255, 255, 255, 0.4)" font-family="'JetBrains Mono', monospace" font-size="8">0.12ms LATENCY</text>
+            </svg>
+
+            <div class="radar-hud-readout">
+              <span>HEAP: 0B</span>
+              <span>&bull;</span>
+              <span>60 FPS</span>
+              <span>&bull;</span>
+              <span>0 LEAKS</span>
+            </div>
+          </div>
+
+          <!-- Right Metric Highlight -->
+          <div class="radar-col">
+            <div class="radar-pill-tag" style="background: rgba(0, 217, 245, 0.08); border-color: rgba(0, 217, 245, 0.28); color: #00d9f5;">
+              <span class="radar-pill-dot" style="background: #00d9f5; box-shadow: 0 0 8px #00d9f5;"></span>
+              <span>Execution Proof</span>
+            </div>
+            <h3 class="radar-col-title">Reliability</h3>
+            <div class="radar-stat-highlight" style="color: #00d9f5;">99.8%</div>
+            <p class="radar-col-desc">Valgrind verified zero heap memory leaks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Minimal Compact Pipeline Strip (4 Quick Badges) -->
+      <div class="prec-card mini-pipeline-strip">
+        <div class="mini-pipe-item">
+          <span class="mini-pipe-num">01</span>
+          <span class="mini-pipe-title">C++ Graph &amp; DSA</span>
+          <span class="status-badge active">Active</span>
+        </div>
+        <div class="mini-pipe-item">
+          <span class="mini-pipe-num">02</span>
+          <span class="mini-pipe-title">POSIX Heap Allocator</span>
+          <span class="status-badge completed">Done</span>
+        </div>
+        <div class="mini-pipe-item">
+          <span class="mini-pipe-num">03</span>
+          <span class="mini-pipe-title">Tailwind CSS UI</span>
+          <span class="status-badge active">Active</span>
+        </div>
+        <div class="mini-pipe-item">
+          <span class="mini-pipe-num">04</span>
+          <span class="mini-pipe-title">Hackathon Sprints</span>
+          <span class="status-badge progress">Sprint</span>
+        </div>
+      </div>
+
+      <!-- Card 3: System OS Dashboard Window (Reference Mockup) -->
+      <div class="os-dash-window">
+        <!-- Left Vertical Rail -->
+        <aside class="os-side-rail">
+          <div class="os-rail-brand" title="Vedanth Core">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+
+          <nav class="os-rail-icons">
+            <div class="os-rail-btn active" title="Runtime Dashboard">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </div>
+            <div class="os-rail-btn" title="Code Engine">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div class="os-rail-btn" title="Network Grid">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div class="os-rail-btn" title="Sprint Timeline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <div class="os-rail-btn" title="Settings">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+          </nav>
+
+          <div class="os-rail-bottom" title="Return to Top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </div>
+        </aside>
+
+        <!-- Main Workspace Pane -->
+        <div class="os-main-pane">
+          <!-- Top Bar -->
+          <div class="os-top-bar">
+            <div class="os-user-greeting">
+              <span class="os-welcome-lbl">Welcome Back</span>
+              <span class="os-user-name">Vedanth // Systems Lead</span>
+            </div>
+            <div class="os-top-actions">
+              <div class="os-action-circle" title="New Sprint">+</div>
+              <div class="os-action-circle" title="Search Metrics">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <div class="os-action-circle" title="Alerts (0)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+              </div>
+              <div class="os-avatar-pill" title="Vedanth">V</div>
+            </div>
+          </div>
+
+          <!-- Body Grid (Analytics + Status Stack) -->
+          <div class="os-body-grid">
+            <!-- Left Hero Analytics Panel -->
+            <div class="os-analytics-panel">
+              <div>
+                <div class="os-tag-pill">
+                  <span class="radar-pill-dot" style="background:#00d9f5; box-shadow:0 0 6px #00d9f5;"></span>
+                  <span>Runtime Analytics</span>
+                </div>
+                <h3 class="os-hero-title">High-Velocity<br>Execution Flow</h3>
+                <p class="os-hero-desc">Deterministic runtime bounds across concurrent C++ data structures with zero thread contention.</p>
+              </div>
+
+              <!-- Sine Wave Timeline Chart -->
+              <div class="os-wave-container">
+                <div class="os-timeline-labels">
+                  <div class="os-time-col"><span class="os-time-val">11ms</span></div>
+                  <div class="os-time-col"><span class="os-time-val">13ms</span></div>
+                  <div class="os-time-col"><span class="os-time-val">14ms</span></div>
+                  <div class="os-time-col"><span class="os-time-val target">10ms ✦</span></div>
+                  <div class="os-time-col"><span class="os-time-val">19ms</span></div>
+                  <div class="os-time-col"><span class="os-time-val">12ms</span></div>
+                </div>
+
+                <!-- Smooth Continuous Wave SVG with Target Starburst -->
+                <svg class="os-wave-svg" viewBox="0 0 500 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0 32 C 40 32, 60 20, 100 24 C 140 28, 170 12, 210 18 C 250 24, 270 42, 310 10 C 350 0, 390 38, 430 30 C 470 24, 490 32, 500 32" stroke="url(#osWaveGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Glowing target point beacon -->
+                  <circle cx="292" cy="18" r="4" fill="#00f5a0"/>
+                  <circle cx="292" cy="18" r="9" stroke="#00f5a0" stroke-width="1.5" stroke-opacity="0.5"/>
+                  <line x1="292" y1="0" x2="292" y2="48" stroke="#00f5a0" stroke-width="1" stroke-dasharray="2 3" stroke-opacity="0.5"/>
+                  <defs>
+                    <linearGradient id="osWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+                      <stop offset="58%" stop-color="#00f5a0"/>
+                      <stop offset="100%" stop-color="#00d9f5" stop-opacity="0.5"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                <div class="os-days-row">
+                  <span>Sun</span>
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span class="active">Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Status Stack -->
+            <div class="os-status-stack">
+              <!-- Main Big Status Card -->
+              <div class="os-glass-card os-main-status-card">
+                <div class="os-loc-pin">
+                  <span class="os-loc-dot"></span>
+                  <span>Core Engine // Localhost</span>
+                </div>
+                <div class="os-big-temp">10ms</div>
+                <div class="os-sub-metrics">
+                  <span>⚡ 19 MB/s</span>
+                  <span>💧 0% Leaks</span>
+                  <span>🏎️ 15k ops/s</span>
+                </div>
+              </div>
+
+              <!-- Mini Card 1 -->
+              <div class="os-glass-card os-mini-card">
+                <div class="os-mini-left">
+                  <span class="os-mini-region">Module 01</span>
+                  <span class="os-mini-city">C++ Graph Engine</span>
+                  <span class="os-mini-sub">Pathfinding &bull; Active</span>
+                </div>
+                <span class="os-mini-right">12ms <small style="color:#00f5a0;">⚡</small></span>
+              </div>
+
+              <!-- Mini Card 2 -->
+              <div class="os-glass-card os-mini-card">
+                <div class="os-mini-left">
+                  <span class="os-mini-region">Module 02</span>
+                  <span class="os-mini-city">POSIX Heap Allocator</span>
+                  <span class="os-mini-sub">Zero Fragmentation</span>
+                </div>
+                <span class="os-mini-right">10ms <small style="color:#00f5a0;">⚡</small></span>
+              </div>
+
+              <!-- Mini Card 3 -->
+              <div class="os-glass-card os-mini-card">
+                <div class="os-mini-left">
+                  <span class="os-mini-region">Module 03</span>
+                  <span class="os-mini-city">Tailwind UI System</span>
+                  <span class="os-mini-sub">60 FPS Render</span>
+                </div>
+                <span class="os-mini-right">14ms <small style="color:#00d9f5;">✦</small></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Sunset Glow Footer Card (Reference Mockup with "Vedanth") -->
+      <footer class="vedanth-footer-card">
+        <!-- Top Nav & Info Bar -->
+        <div class="vedanth-footer-top">
+          <!-- Left Navigation Links -->
+          <nav class="vedanth-footer-nav" aria-label="Footer Navigation">
+            <a href="index.html#home">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="index.html#skills">Solutions</a>
+            <a href="index.html#contact">Contact us</a>
+          </nav>
+
+          <!-- Right Socials & Contact Detail -->
+          <div class="vedanth-footer-info">
+            <div class="vedanth-social-row">
+              <!-- WhatsApp -->
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </a>
+              <!-- Instagram -->
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </a>
+              <!-- Globe / GitHub -->
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </a>
+              <!-- LinkedIn -->
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </a>
+            </div>
+
+            <div class="vedanth-contact-detail">
+              <span>E-mail: <a href="mailto:hello@vedanth.dev">hello@vedanth.dev</a></span>
+            </div>
+            <div class="vedanth-contact-detail">
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+            <div class="vedanth-contact-detail">
+              <span>India &bull; Remote &bull; Open for Internships</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Giant Display Name (Schmidt Style) -->
+        <div class="vedanth-giant-name" aria-hidden="true">Vedanth</div>
+      </footer>
+
+    </section>
+
+    <!-- Buffer zone for concluding frames smoothly -->
+    <div class="scroll-buffer"></div>
+  </main>
+
+  <!-- Floating Minimalist UI (Frame Counter & Scroll Hint) -->
+  <div class="floating-ui-wrap">
+    <div class="frame-pill">
+      <span class="dot"></span>
+      <span id="frameNum">Frame 001</span>&nbsp;/&nbsp;240
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+      <span>Scroll to animate</span>
+      <span class="hint-arrow">↓</span>
+    </div>
+  </div>
+
+  <!-- Scroll-Scrubbed Canvas Animation Script (240 Frames) -->
+  <script>
+    (function () {
+      const TOTAL_FRAMES = 240;
+      const canvas = document.getElementById('view');
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const frameNumEl = document.getElementById('frameNum');
+      const progressBar = document.getElementById('progressBar');
+      const scrollHint = document.getElementById('scrollHint');
+      const graphicHero = document.getElementById('graphicHero');
+
+      const frames = new Array(TOTAL_FRAMES);
+      let lastRenderedIndex = 0;
+      let targetFrame = 0;
+      let currentFrame = 0;
+      let dpr = 1;
+
+      function getFramePath(i) {
+        return `project-frames/ezgif-frame-${String(i + 1).padStart(3, '0')}.jpg`;
+      }
+
+      // Preload images
+      function initPreload() {
+        const f0 = new Image();
+        f0.src = getFramePath(0);
+        frames[0] = f0;
+        f0.onload = () => {
+          render(0);
+        };
+
+        // Preload remaining frames
+        for (let i = 1; i < TOTAL_FRAMES; i++) {
+          const img = new Image();
+          img.src = getFramePath(i);
+          frames[i] = img;
+        }
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(window.innerWidth * dpr);
+        canvas.height = Math.round(window.innerHeight * dpr);
+        render(Math.round(currentFrame));
+      }
+
+      function getBestImage(idx) {
+        let img = frames[idx];
+        if (img && img.complete && img.naturalWidth > 0) {
+          lastRenderedIndex = idx;
+          return img;
+        }
+
+        // Closest loaded frame search
+        for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+          const prev = idx - offset;
+          if (prev >= 0 && frames[prev]?.complete && frames[prev]?.naturalWidth > 0) {
+            lastRenderedIndex = prev;
+            return frames[prev];
+          }
+          const next = idx + offset;
+          if (next < TOTAL_FRAMES && frames[next]?.complete && frames[next]?.naturalWidth > 0) {
+            lastRenderedIndex = next;
+            return frames[next];
+          }
+        }
+
+        return frames[lastRenderedIndex] || frames[0];
+      }
+
+      function render(frameIdx) {
+        const img = getBestImage(frameIdx);
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+
+        // Clear canvas with background color (#0f0b0c)
+        ctx.fillStyle = '#0f0b0c';
+        ctx.fillRect(0, 0, cw, ch);
+
+        const imgW = img.naturalWidth;
+        const imgH = img.naturalHeight;
+        const imgRatio = imgW / imgH;
+        const screenRatio = cw / ch;
+
+        let dw, dh, dx, dy;
+
+        // Animation size increased by 20% (0.45 * 1.20 = 0.55 scale, centered)
+        const scale = 0.55;
+
+        if (screenRatio > imgRatio) {
+          dw = Math.round(cw * scale);
+          dh = Math.round(dw / imgRatio);
+          dx = Math.round((cw - dw) / 2);
+          dy = Math.round((ch - dh) / 2);
+        } else {
+          dh = Math.round(ch * scale);
+          dw = Math.round(dh * imgRatio);
+          dx = Math.round((cw - dw) / 2);
+          dy = Math.round((ch - dh) / 2);
+        }
+
+        ctx.drawImage(img, dx, dy, dw, dh);
+
+        // Edge Feathering: dissolve outer borders directly into #0f0b0c
+        const fadeW = Math.round(dw * 0.12);
+        const fadeH = Math.round(dh * 0.08);
+
+        // Left edge fade
+        const gradL = ctx.createLinearGradient(dx, 0, dx + fadeW, 0);
+        gradL.addColorStop(0, '#0f0b0c');
+        gradL.addColorStop(1, 'rgba(15, 11, 12, 0)');
+        ctx.fillStyle = gradL;
+        ctx.fillRect(dx - 1, dy - 1, fadeW + 1, dh + 2);
+
+        // Right edge fade
+        const gradR = ctx.createLinearGradient(dx + dw - fadeW, 0, dx + dw, 0);
+        gradR.addColorStop(0, 'rgba(15, 11, 12, 0)');
+        gradR.addColorStop(1, '#0f0b0c');
+        ctx.fillStyle = gradR;
+        ctx.fillRect(dx + dw - fadeW, dy - 1, fadeW + 2, dh + 2);
+
+        // Top edge fade
+        const gradT = ctx.createLinearGradient(0, dy, 0, dy + fadeH);
+        gradT.addColorStop(0, '#0f0b0c');
+        gradT.addColorStop(1, 'rgba(15, 11, 12, 0)');
+        ctx.fillStyle = gradT;
+        ctx.fillRect(dx - 1, dy - 1, dw + 2, fadeH + 1);
+
+        // Bottom edge fade
+        const gradB = ctx.createLinearGradient(0, dy + dh - fadeH, 0, dy + dh);
+        gradB.addColorStop(0, 'rgba(15, 11, 12, 0)');
+        gradB.addColorStop(1, '#0f0b0c');
+        ctx.fillStyle = gradB;
+        ctx.fillRect(dx - 1, dy + dh - fadeH, dw + 2, fadeH + 2);
+      }
+
+      // Smooth scroll tracking across the whole page
+      function onScroll() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+        const progress = Math.max(0, Math.min(1, window.scrollY / scrollable));
+        targetFrame = progress * (TOTAL_FRAMES - 1);
+
+        // Update progress bar
+        if (progressBar) {
+          progressBar.style.width = (progress * 100) + '%';
+        }
+
+        // Dissolve graphic hero smoothly as you scroll into animation
+        if (graphicHero) {
+          const fadeVal = Math.max(0, 1 - (window.scrollY / 450));
+          graphicHero.style.opacity = fadeVal;
+          graphicHero.style.transform = `translate(-50%, calc(-50% - ${window.scrollY * 0.15}px)) scale(${Math.max(0.9, 1 - (window.scrollY / 2500))})`;
+          graphicHero.style.pointerEvents = fadeVal < 0.1 ? 'none' : 'auto';
+        }
+
+        // Fade hint on scroll
+        if (scrollHint) {
+          if (window.scrollY > 40) {
+            scrollHint.style.opacity = '0';
+          } else {
+            scrollHint.style.opacity = '1';
+          }
+        }
+      }
+
+      // Inertial lerp animation loop
+      function loop() {
+        const diff = targetFrame - currentFrame;
+        if (Math.abs(diff) > 0.0005) {
+          currentFrame += diff * 0.1;
+        } else {
+          currentFrame = targetFrame;
+        }
+
+        const activeIdx = Math.round(currentFrame);
+        render(activeIdx);
+
+        // Update frame counter
+        if (frameNumEl) {
+          frameNumEl.textContent = 'Frame ' + String(activeIdx + 1).padStart(3, '0');
+        }
+
+        requestAnimationFrame(loop);
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      initPreload();
+      resize();
+      onScroll();
+      requestAnimationFrame(loop);
+    })();
+
+    // Interactive Prompt Bar Controller
+    const prompts = [
+      "Build high-performance C++ systems & responsive web portfolio",
+      "Optimize O(log N) algorithms & deploy 24h hackathon MVP",
+      "Craft pixel-perfect responsive UI components with Tailwind CSS",
+      "Develop low-level POSIX shell & custom memory allocator"
+    ];
+    let promptIndex = 0;
+
+    function triggerGenerate() {
+      promptIndex = (promptIndex + 1) % prompts.length;
+      const el = document.getElementById('promptText');
+      if (el) {
+        el.style.opacity = '0.3';
+        setTimeout(() => {
+          el.textContent = prompts[promptIndex];
+          el.style.opacity = '1';
+        }, 180);
+      }
+    }
+
+    function resetPrompt() {
+      const el = document.getElementById('promptText');
+      if (el) {
+        el.textContent = prompts[0];
+      }
+    }
+  </script>
+</body>
+</html>
