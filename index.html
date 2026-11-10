@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vedanth — Frontend & C++ Developer | B.Tech CSE</title>
-  <meta name="description" content="Portfolio of Vedanth — 2nd Year B.Tech CSE Undergrad, C/C++ Systems & Tailwind CSS Web Developer, Hackathon Competitor.">
+  <meta name="description"
+    content="Portfolio of Vedanth — 2nd Year B.Tech CSE Undergrad, C/C++ Systems & Tailwind CSS Web Developer, Hackathon Competitor.">
   <meta name="theme-color" content="#0f0b0c">
   <meta property="og:title" content="Vedanth — Frontend & C++ Developer | B.Tech CSE">
-  <meta property="og:description" content="High-performance C/C++ systems, responsive Tailwind CSS layouts, and rapid hackathon sprint delivery.">
+  <meta property="og:description"
+    content="High-performance C/C++ systems, responsive Tailwind CSS layouts, and rapid hackathon sprint delivery.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -59,6 +67,7 @@
       transition: top 0.25s ease;
       box-shadow: 0 8px 24px rgba(213, 29, 69, 0.4);
     }
+
     .skip-link:focus {
       top: 20px;
     }
@@ -70,6 +79,7 @@
       transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
+
     .reveal-on-scroll.is-revealed {
       opacity: 1;
       transform: translateY(0);
@@ -77,15 +87,20 @@
 
     /* Prefers Reduced Motion (A11y) */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
+
       .stamp-svg {
         animation: none !important;
       }
+
       .reveal-on-scroll {
         opacity: 1 !important;
         transform: none !important;
@@ -97,13 +112,16 @@
     ::-webkit-scrollbar {
       width: 6px;
     }
+
     ::-webkit-scrollbar-track {
       background: #0f0b0c;
     }
+
     ::-webkit-scrollbar-thumb {
       background: #251e20;
       border-radius: 4px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: #D51D45;
     }
@@ -937,10 +955,26 @@
       pointer-events: none;
       user-select: none;
     }
-    .cross-tl { top: 8px; left: 8px; }
-    .cross-tr { top: 8px; right: 8px; }
-    .cross-bl { bottom: 8px; left: 8px; }
-    .cross-br { bottom: 8px; right: 8px; }
+
+    .cross-tl {
+      top: 8px;
+      left: 8px;
+    }
+
+    .cross-tr {
+      top: 8px;
+      right: 8px;
+    }
+
+    .cross-bl {
+      bottom: 8px;
+      left: 8px;
+    }
+
+    .cross-br {
+      bottom: 8px;
+      right: 8px;
+    }
 
     .toggle-pill {
       display: inline-flex;
@@ -989,20 +1023,43 @@
       gap: 6px;
       margin-bottom: 12px;
     }
+
     .term-dots span {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.2);
     }
-    .term-dots span:nth-child(1) { background: #D51D45; }
-    .term-dots span:nth-child(2) { background: #D83A91; }
-    .term-dots span:nth-child(3) { background: #78346F; }
 
-    .c-kw { color: #D83A91; font-weight: 600; }
-    .c-fn { color: #ffffff; font-weight: 600; }
-    .c-type { color: #e5b9d3; }
-    .c-str { color: #f59e0b; }
+    .term-dots span:nth-child(1) {
+      background: #D51D45;
+    }
+
+    .term-dots span:nth-child(2) {
+      background: #D83A91;
+    }
+
+    .term-dots span:nth-child(3) {
+      background: #78346F;
+    }
+
+    .c-kw {
+      color: #D83A91;
+      font-weight: 600;
+    }
+
+    .c-fn {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .c-type {
+      color: #e5b9d3;
+    }
+
+    .c-str {
+      color: #f59e0b;
+    }
 
     /* Glowing circle badge */
     .glow-circle-wrap {
@@ -1186,33 +1243,41 @@
         flex-direction: column;
         gap: 30px;
       }
+
       .hero-right {
         max-width: 100%;
       }
+
       .hero-services {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
       }
+
       .brands-section {
         flex-direction: column;
         align-items: flex-start;
         padding: 26px 24px;
       }
+
       .brands-list {
         justify-content: flex-start;
         gap: 28px;
       }
+
       .designs-header {
         grid-template-columns: 1fr;
         gap: 36px;
       }
+
       .grid-row-3 {
         grid-template-columns: 1fr;
       }
+
       .grid-col {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
+
       .grid-approach-row {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -1224,34 +1289,43 @@
         width: calc(100% - 28px);
         padding: 12px 20px;
       }
+
       .nav-menu {
         display: none;
       }
+
       .hero-container {
         height: 140vh;
         padding: 0 16px;
       }
+
       .hero-sticky {
         padding: 95px 6px 30px;
       }
+
       .hero-title {
         font-size: 3.2rem;
       }
+
       .hero-services {
         grid-template-columns: 1fr;
         gap: 16px;
       }
+
       .content-sections {
         padding: 20px 16px 60px;
       }
+
       .cards-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
+
       .why-pillars-grid {
         grid-template-columns: 1fr;
         gap: 24px;
       }
+
       .metrics-row {
         grid-template-columns: 1fr;
       }
@@ -1576,8 +1650,13 @@
     }
 
     @keyframes rotateStamp {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .stamp-center-icon {
@@ -1717,14 +1796,17 @@
         gap: 20px;
         align-items: flex-start;
       }
+
       .resume-education-box {
         text-align: left;
         max-width: 100%;
       }
+
       .resume-grid {
         grid-template-columns: 1fr;
         gap: 32px;
       }
+
       .skills-stamp-row {
         flex-direction: column;
         gap: 20px;
@@ -1735,10 +1817,13 @@
       .skills-checklist {
         grid-template-columns: 1fr;
       }
+
       .tools-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .r-card, .timeline-card {
+
+      .r-card,
+      .timeline-card {
         padding: 24px 18px;
       }
     }
@@ -1796,9 +1881,20 @@
       transition: border-color 0.2s ease;
     }
 
-    .window-frame:hover .window-dot:nth-child(1) { border-color: #ff5f56; background: rgba(255, 95, 86, 0.2); }
-    .window-frame:hover .window-dot:nth-child(2) { border-color: #ffbd2e; background: rgba(255, 189, 46, 0.2); }
-    .window-frame:hover .window-dot:nth-child(3) { border-color: #27c93f; background: rgba(39, 201, 63, 0.2); }
+    .window-frame:hover .window-dot:nth-child(1) {
+      border-color: #ff5f56;
+      background: rgba(255, 95, 86, 0.2);
+    }
+
+    .window-frame:hover .window-dot:nth-child(2) {
+      border-color: #ffbd2e;
+      background: rgba(255, 189, 46, 0.2);
+    }
+
+    .window-frame:hover .window-dot:nth-child(3) {
+      border-color: #27c93f;
+      background: rgba(39, 201, 63, 0.2);
+    }
 
     .window-asterisk {
       color: #D51D45;
@@ -1848,8 +1944,17 @@
     }
 
     @keyframes pulseGreen {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(1.3);
+      }
     }
 
     .contact-title {
@@ -2128,9 +2233,11 @@
         gap: 40px;
         padding: 36px 24px;
       }
+
       .window-topbar {
         padding: 14px 20px;
       }
+
       .contact-title {
         font-size: 2.4rem;
       }
@@ -2140,9 +2247,11 @@
       .contact-section {
         padding: 20px 16px 60px;
       }
+
       .window-body {
         padding: 28px 18px;
       }
+
       .contact-form-wrapper {
         padding: 24px 18px;
       }
@@ -2276,12 +2385,14 @@
         text-align: center;
         justify-content: center;
       }
+
       .footer-socials {
         gap: 12px;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Skip to Main Content (Accessibility WCAG 2.1 AA) -->
@@ -2321,7 +2432,7 @@
       <div class="hero-sticky">
         <div class="hero-top-row">
           <div class="hero-left">
-            <p class="hero-eyebrow">Hey, I'm Vedanth 👋 — 2nd Year B.Tech CSE Undergrad</p>
+            <p class="hero-eyebrow">Vedanth 👋 • B.Tech CSE</p>
             <h1 class="hero-title">
               Frontend &<br>C++ Developer
             </h1>
@@ -2329,10 +2440,10 @@
           <div class="hero-right">
             <div class="hero-status-pill">
               <span class="status-pulse-dot"></span>
-              Available for Internships • <span id="heroClock">11:35 AM</span> IST
+              Open for Internships • <span id="heroClock">11:35 AM</span> IST
             </div>
-            <h2>Building fast, responsive & algorithmic solutions.</h2>
-            <p>I'm Vedanth, a 2nd-year B.Tech CSE student passionate about core C/C++ problem solving, crafting modern web interfaces with Tailwind CSS, and building hackathon-winning prototypes under pressure.</p>
+            <h2>High-Performance Systems &amp; Modern Web.</h2>
+            <p>C/C++ DSA • Tailwind CSS • Hackathon MVPs.</p>
             <div class="hero-actions-row">
               <a href="projects.html" class="btn-hero-primary">
                 <span>Explore Projects</span>
@@ -2392,7 +2503,8 @@
           <div class="brand-item">
             <span class="brand-icon">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                <path d="M4 2l1.6 18L12 22l6.4-2L20 2H4zm13.7 5.5H8.7l.2 2.5h8.5l-.6 6.3-4.8 1.4-4.8-1.4-.3-3.6h2.4l.2 1.8 2.5.7 2.5-.7.3-3.2H8.3L7.7 5h10.3l-.3 2.5z" />
+                <path
+                  d="M4 2l1.6 18L12 22l6.4-2L20 2H4zm13.7 5.5H8.7l.2 2.5h8.5l-.6 6.3-4.8 1.4-4.8-1.4-.3-3.6h2.4l.2 1.8 2.5.7 2.5-.7.3-3.2H8.3L7.7 5h10.3l-.3 2.5z" />
               </svg>
             </span>
             <span>HTML & CSS</span>
@@ -2402,7 +2514,8 @@
           <div class="brand-item">
             <span class="brand-icon">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+                <path
+                  d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
               </svg>
             </span>
             <span>Tailwind CSS</span>
@@ -2412,7 +2525,8 @@
           <div class="brand-item">
             <span class="brand-icon">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1c1.97-.47 3.5-2.07 3.61-4.06C19.08 11.63 21 9.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
+                <path
+                  d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1c1.97-.47 3.5-2.07 3.61-4.06C19.08 11.63 21 9.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
               </svg>
             </span>
             <span>Hackathon Veteran</span>
@@ -2431,10 +2545,10 @@
           </div>
           <div class="designs-right">
             <p class="designs-desc">
-              I'm Vedanth, a 2nd-year B.Tech Computer Science Engineering student passionate about engineering practical tech. Whether structuring algorithmic solutions in C and C++ or crafting sleek, mobile-friendly interfaces with Tailwind CSS, I love building under pressure and collaborating in hackathons.
+              Algorithmic problem solving and high-impact web interfaces built under pressure.
             </p>
             <div class="designs-cta-wrap">
-              <span class="designs-cta-subtext">Open for Internships, Hackathons & Team Projects</span>
+              <span class="designs-cta-subtext">Open for Internships &amp; Hackathons</span>
               <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
                 <a href="projects.html" class="btn-orange">
                   Explore All Projects
@@ -2456,7 +2570,7 @@
             <div class="card-content">
               <span class="card-tag">Core Engineering</span>
               <h3 class="card-title">C & C++ / DSA</h3>
-              <p class="card-desc">Efficient algorithms, memory management, and structured problem solving.</p>
+              <p class="card-desc">DSA &amp; memory optimization.</p>
             </div>
           </div>
 
@@ -2466,7 +2580,7 @@
             <div class="card-content">
               <span class="card-tag">Web Development</span>
               <h3 class="card-title">HTML, CSS & Tailwind</h3>
-              <p class="card-desc">Building pixel-perfect, responsive web apps with fluid modern layouts.</p>
+              <p class="card-desc">Pixel-perfect, modern UI.</p>
             </div>
           </div>
 
@@ -2476,7 +2590,7 @@
             <div class="card-content">
               <span class="card-tag">Hackathon Experience</span>
               <h3 class="card-title">Hackathon Builds</h3>
-              <p class="card-desc">Rapid MVP prototyping, agile teamwork, and coding under tight deadlines.</p>
+              <p class="card-desc">Rapid 24–48h sprint MVPs.</p>
             </div>
           </div>
         </div>
@@ -2494,7 +2608,7 @@
             <span>Tailwind CSS</span><span class="sep">—</span>
             <span>DSA &amp; Algorithms</span><span class="sep">—</span>
             <span>Hackathons</span><span class="sep">—</span>
-            <span>B.Tech CSE '28</span>
+            <span>B.Tech CSE '25</span>
           </div>
 
           <div class="grid-row-3">
@@ -2522,8 +2636,10 @@
                 <div class="term-header">
                   <div class="term-dots"><span></span><span></span><span></span></div>
                   <div class="term-tabs">
-                    <button class="term-tab active" onclick="switchCodeTab('cpp', this)" aria-label="Show C++ code">main.cpp</button>
-                    <button class="term-tab" onclick="switchCodeTab('tailwind', this)" aria-label="Show Tailwind code">Hero.tsx</button>
+                    <button class="term-tab active" onclick="switchCodeTab('cpp', this)"
+                      aria-label="Show C++ code">main.cpp</button>
+                    <button class="term-tab" onclick="switchCodeTab('tailwind', this)"
+                      aria-label="Show Tailwind code">Hero.tsx</button>
                   </div>
                 </div>
                 <pre id="codeBlockCpp"><code><span class="c-kw">struct</span> <span class="c-fn">Developer</span> {
@@ -2570,17 +2686,17 @@
         <div class="grid-block grid-why-block">
           <div class="why-pillars-grid">
             <div class="why-pillar-item">
-              <p class="why-pillar-desc">Deep focus on algorithmic foundations, data structures, and memory-efficient C and C++ programming.</p>
+              <p class="why-pillar-desc">Algorithms, DSA &amp; memory efficiency.</p>
               <h4 class="why-pillar-title">Algorithmic<br>Rigor</h4>
             </div>
 
             <div class="why-pillar-item">
-              <p class="why-pillar-desc">Crafting modern, responsive web apps using utility-first Tailwind CSS and clean semantically structured HTML.</p>
+              <p class="why-pillar-desc">Modern utility-first responsive layouts.</p>
               <h4 class="why-pillar-title">Tailwind<br>Precision</h4>
             </div>
 
             <div class="why-pillar-item">
-              <p class="why-pillar-desc">Tested in competitive multi-hour hackathons, transforming concepts into deployed MVPs under tight deadlines.</p>
+              <p class="why-pillar-desc">Fast concept-to-MVP in 24–48h sprints.</p>
               <h4 class="why-pillar-title">Hackathon<br>Execution</h4>
             </div>
           </div>
@@ -2600,13 +2716,13 @@
               </div>
               <h3 class="solution-heading">My Approach</h3>
               <p class="solution-desc">
-                From architecting low-level algorithmic solutions in C++ to structuring modular, responsive frontend components in Tailwind CSS, I focus on performance, readability, and delivering scalable code on schedule.
+                Performance, clean architecture, and rapid deployment.
               </p>
             </div>
 
             <div class="approach-right">
               <p class="approach-subdesc">
-                No bloat, just the right algorithms, clean interfaces, and rapid execution under hackathon deadlines.
+                Zero bloat. Built for speed.
               </p>
               <div class="metrics-row">
                 <div class="metric-box">
@@ -2642,7 +2758,7 @@
           <div class="resume-education-box">
             <span class="resume-section-label">Education</span>
             <div class="resume-education-title">Bachelor of Technology in Computer Science &amp; Engineering</div>
-            <div class="resume-education-sub">2nd Year Undergrad • 2024 – 2028</div>
+            <div class="resume-education-sub">B.Tech CSE • Class of '25</div>
           </div>
         </div>
 
@@ -2661,7 +2777,7 @@
                 <div class="dna-stat-line accent-pink">One algorithmic mindset.</div>
               </div>
               <p class="dna-bio-text">
-                I'm a computer science undergraduate driven by algorithmic efficiency and modern web architecture. I bridge the gap between low-level performance in C/C++ and sleek, responsive interfaces built with Tailwind CSS. Constantly pushing limits in high-intensity 24–48h hackathon sprints.
+                Bridging low-level systems with sleek, responsive web architecture.
               </p>
             </div>
 
@@ -2670,12 +2786,13 @@
               <div class="plc-left">
                 <div class="plc-icon-box">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                   </svg>
                 </div>
                 <div>
                   <div class="plc-title">Portfolio &amp; Repositories</div>
-                  <div class="plc-sub">Explore my open-source code &amp; hackathon builds</div>
+                  <div class="plc-sub">Open-source &amp; sprint repositories</div>
                 </div>
               </div>
               <span class="plc-arrow">↗</span>
@@ -2764,7 +2881,8 @@
                   <defs>
                     <path id="circlePath" d="M 80, 80 m -58, 0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0" />
                   </defs>
-                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(57, 231, 95, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" />
+                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(57, 231, 95, 0.25)" stroke-width="1.5"
+                    stroke-dasharray="4 4" />
                   <text fill="#39e75f" font-size="11.5" font-weight="700" letter-spacing="3.2">
                     <textPath href="#circlePath">
                       VEDANTH • DEVELOPER • CODER • HACKATHONS •
@@ -2784,9 +2902,9 @@
                 <div class="timeline-item">
                   <div class="timeline-role">Hackathon Competitor &amp; Builder</div>
                   <div class="timeline-org">Hackathons &amp; Buildathon Sprints</div>
-                  <div class="timeline-meta">2024 – Present • Competitive Sprint Builds</div>
+                  <div class="timeline-meta">2024 – Present • Sprint Builds</div>
                   <p class="timeline-desc">
-                    Participating in high-pace hackathons. Ideating, architecting, and shipping functional web MVPs in 24–48 hours with agile team collaboration.
+                    Ideated and shipped functional web MVPs in 24–48h sprints.
                   </p>
                 </div>
 
@@ -2794,9 +2912,9 @@
                 <div class="timeline-item">
                   <div class="timeline-role">Frontend &amp; Responsive Web UI</div>
                   <div class="timeline-org">Modern Web Applications</div>
-                  <div class="timeline-meta">2024 – Present • Projects &amp; Exploration</div>
+                  <div class="timeline-meta">2024 – Present • UI / UX</div>
                   <p class="timeline-desc">
-                    Designing responsive, accessible web interfaces using Tailwind CSS, HTML5, and CSS3 with fluid animations and clean component structures.
+                    Responsive layouts, fluid animations, and component design.
                   </p>
                 </div>
 
@@ -2806,17 +2924,17 @@
                   <div class="timeline-org">Core Computer Science</div>
                   <div class="timeline-meta">2023 – Present • Problem Solving</div>
                   <p class="timeline-desc">
-                    Mastering low-level programming with C and C++, memory allocation, pointer manipulation, and practicing algorithmic problem solving (DSA).
+                    Memory management, pointers, and DSA problem solving.
                   </p>
                 </div>
 
                 <!-- Milestone 4 -->
                 <div class="timeline-item">
                   <div class="timeline-role">B.Tech Computer Science &amp; Engineering</div>
-                  <div class="timeline-org">2nd Year Undergraduate Degree</div>
-                  <div class="timeline-meta">2024 – 2028 • Academic Program</div>
+                  <div class="timeline-org">Undergraduate Degree</div>
+                  <div class="timeline-meta">Class of '25 • Academics</div>
                   <p class="timeline-desc">
-                    Coursework across Data Structures, Discrete Mathematics, Object-Oriented Programming, and Computer Organization &amp; Architecture.
+                    Core coursework: DSA, OOP, OS, and System Architecture.
                   </p>
                 </div>
 
@@ -2859,7 +2977,7 @@
                   Let's build<br>something <span>iconic.</span>
                 </h2>
                 <p class="contact-subtitle">
-                  Whether you're looking for a C/C++ problem solver, a Tailwind frontend developer, or an agile hackathon teammate — I'm just a ping away.
+                  Open for summer internships, web projects, and hackathon teams.
                 </p>
 
                 <!-- Contact Details -->
@@ -2889,7 +3007,7 @@
                     <div class="c-info-icon">📍</div>
                     <div class="c-info-meta">
                       <span class="c-info-label">Current Base</span>
-                      <span class="c-info-value">India • Open to Relocation &amp; Remote</span>
+                      <span class="c-info-value">India • Remote &amp; Relocation</span>
                     </div>
                   </div>
                 </div>
@@ -2917,14 +3035,14 @@
 
               <!-- Footer watermark subtext (Matches "Powered by A28.") -->
               <div class="window-credit">
-                Engineered by <span>Vedanth</span> • B.Tech CSE '28
+                Engineered by <span>Vedanth</span> • B.Tech CSE '25
               </div>
             </div>
 
             <!-- Right: Interactive Quick Message Box -->
             <div class="contact-form-wrapper">
               <div class="form-header-title">Send a Quick Message</div>
-              <div class="form-header-desc">Select a topic or drop a direct line anytime.</div>
+              <div class="form-header-desc">Quick ping or inquiry.</div>
 
               <!-- Topic Chips -->
               <div class="topic-pills-wrap">
@@ -2948,7 +3066,9 @@
 
                 <div class="form-group">
                   <label class="form-label">Message / Project Details</label>
-                  <textarea id="senderMsg" class="form-textarea" placeholder="Tell me about your hackathon team, project requirements, or opportunity..." required></textarea>
+                  <textarea id="senderMsg" class="form-textarea"
+                    placeholder="Brief project scope or message..."
+                     required></textarea>
                 </div>
 
                 <button type="submit" class="btn-send-message">
@@ -2978,43 +3098,52 @@
         <div class="footer-inner">
           <h2 class="footer-title">Vedanth<span>.dev</span></h2>
           <p class="footer-desc">
-            Vedanth is a 2nd-year B.Tech Computer Science &amp; Engineering undergraduate passionate about high-performance C &amp; C++ systems, crafting responsive modern interfaces with Tailwind CSS, and shipping production-ready MVPs in competitive hackathons.
+            Engineered by Vedanth • B.Tech CSE '25
           </p>
 
           <!-- Social Icon Circles (Reference Style) -->
           <div class="footer-socials">
             <!-- GitHub -->
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="GitHub">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon"
+              aria-label="GitHub">
               <svg viewBox="0 0 24 24">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
               </svg>
             </a>
 
             <!-- LinkedIn -->
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon"
+              aria-label="LinkedIn">
               <svg viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                <path
+                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
               </svg>
             </a>
 
             <!-- Twitter / X -->
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Twitter">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon"
+              aria-label="Twitter">
               <svg viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
 
             <!-- Discord -->
-            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Discord">
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon"
+              aria-label="Discord">
               <svg viewBox="0 0 24 24">
-                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                <path
+                  d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
               </svg>
             </a>
 
             <!-- Mail -->
             <a href="mailto:vedanth.dev@gmail.com" class="footer-social-icon" aria-label="Email">
               <svg viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
             </a>
           </div>
@@ -3045,8 +3174,8 @@
 
       <div class="modal-section">
         <div class="modal-sec-title">Education &amp; Academics</div>
-        <p class="modal-p"><strong>Bachelor of Technology in Computer Science &amp; Engineering (2024 – 2028)</strong></p>
-        <p class="modal-p">Key Coursework: Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), Discrete Mathematics, Computer Systems &amp; Architecture, Operating Systems.</p>
+        <p class="modal-p"><strong>B.Tech in Computer Science &amp; Engineering (Class of '25)</strong></p>
+        <p class="modal-p">Coursework: DSA, OOP, Discrete Math, Computer Architecture, OS.</p>
       </div>
 
       <div class="modal-section">
@@ -3054,26 +3183,24 @@
         <div class="modal-tags-list">
           <span class="modal-tag">C &amp; C++ (DSA &amp; OOP)</span>
           <span class="modal-tag">Tailwind CSS</span>
-          <span class="modal-tag">HTML5 &amp; Modern CSS3</span>
+          <span class="modal-tag">HTML5 &amp; CSS3</span>
           <span class="modal-tag">Algorithmic Optimization</span>
           <span class="modal-tag">Git &amp; GitHub</span>
           <span class="modal-tag">Linux / Bash</span>
-          <span class="modal-tag">Responsive UI Architecture</span>
-          <span class="modal-tag">VS Code</span>
         </div>
       </div>
 
       <div class="modal-section">
         <div class="modal-sec-title">Hackathon &amp; Practical Execution</div>
-        <p class="modal-p">• Active hackathon competitor turning problem statements into functional, deployable web MVPs within 24–48 hours.</p>
-        <p class="modal-p">• Experience in agile multi-disciplinary team coordination, git branch workflows, and fast frontend implementation.</p>
+        <p class="modal-p">• 24–48h sprint execution &amp; rapid MVP delivery.</p>
+        <p class="modal-p">• Agile team collaboration &amp; Git branch workflows.</p>
       </div>
 
       <div class="modal-section">
         <div class="modal-sec-title">Contact &amp; Placement Readiness</div>
-        <p class="modal-p">Email: <a href="mailto:vedanth.dev@gmail.com" style="color:#39e75f; text-decoration:none;">vedanth.dev@gmail.com</a></p>
-        <p class="modal-p">Phone: <a href="tel:+919876543210" style="color:#ffffff; text-decoration:none;">+91 98765 43210</a></p>
-        <p class="modal-p">Status: <strong>Open for Summer '25 Software Engineering Internships &amp; Hackathon Teams</strong></p>
+        <p class="modal-p">Email: <a href="mailto:vedanth.dev@gmail.com"
+            style="color:#39e75f; text-decoration:none;">vedanth.dev@gmail.com</a></p>
+        <p class="modal-p">Status: <strong>Open for Internships &amp; Hackathon Teams</strong></p>
       </div>
 
       <div class="modal-actions">
@@ -3336,13 +3463,13 @@
 
       // Topic chip selector & direct mail launcher for Contact Window
       let selectedContactTopic = 'Summer Internship';
-      window.selectTopic = function(el, topic) {
+      window.selectTopic = function (el, topic) {
         document.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('active'));
         el.classList.add('active');
         selectedContactTopic = topic;
       };
 
-      window.handleContactSubmit = function(e) {
+      window.handleContactSubmit = function (e) {
         e.preventDefault();
         const name = document.getElementById('senderName').value;
         const email = document.getElementById('senderEmail').value;
@@ -3355,7 +3482,7 @@
       };
 
       // Interactive Code Tab Switcher (Creativity & Craft)
-      window.switchCodeTab = function(tab, el) {
+      window.switchCodeTab = function (tab, el) {
         document.querySelectorAll('.term-tab').forEach(t => t.classList.remove('active'));
         el.classList.add('active');
         const cpp = document.getElementById('codeBlockCpp');
@@ -3370,7 +3497,7 @@
       };
 
       // Resume Credentials Modal Controller
-      window.openResumeModal = function() {
+      window.openResumeModal = function () {
         const modal = document.getElementById('resumeModal');
         if (modal) {
           modal.classList.add('is-open');
@@ -3378,7 +3505,7 @@
         }
       };
 
-      window.closeResumeModal = function() {
+      window.closeResumeModal = function () {
         const modal = document.getElementById('resumeModal');
         if (modal) {
           modal.classList.remove('is-open');
@@ -3386,13 +3513,13 @@
         }
       };
 
-      window.handleModalBackdropClick = function(e) {
+      window.handleModalBackdropClick = function (e) {
         if (e.target.id === 'resumeModal') {
           closeResumeModal();
         }
       };
 
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
           closeResumeModal();
         }
@@ -3439,4 +3566,5 @@
     })();
   </script>
 </body>
+
 </html>
