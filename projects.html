@@ -2002,10 +2002,12 @@
     }
 
     .flagship-card {
-      background: rgba(255, 255, 255, 0.025);
+      background: rgba(15, 11, 12, 0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 18px;
-      padding: 26px 24px;
+      padding: 20px 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -2784,12 +2786,12 @@
         <div class="flagship-header-row">
           <div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #00f5a0; letter-spacing: 0.1em; text-transform: uppercase;">
-              // Core Repositories &amp; Artifacts
+              // Projects
             </div>
-            <h3 class="flagship-title">Flagship <span>Engineering Projects</span></h3>
+            <h3 class="flagship-title">Flagship <span>Engineering</span></h3>
           </div>
           <p class="flagship-sub">
-            High-performance C++ systems, algorithmic engines, and responsive web applications.
+            C++ systems, algorithms &amp; modern web apps.
           </p>
         </div>
 
@@ -2798,22 +2800,21 @@
           <div class="flagship-card">
             <div>
               <div class="flagship-card-meta">
-                <span class="flagship-card-tag">Systems &bull; Algorithms</span>
+                <span class="flagship-card-tag">Algorithms</span>
                 <span class="flagship-card-metric">O((V+E) log V)</span>
               </div>
-              <h4 class="flagship-card-title">C++ Graph &amp; Pathfinding Engine</h4>
+              <h4 class="flagship-card-title">C++ Graph Engine</h4>
               <p class="flagship-card-desc">
-                High-performance grid traversal implementing Dijkstra, A*, and Bidirectional search with dynamic obstacle recalculation and zero external dependencies.
+                Dijkstra &amp; A* pathfinding with dynamic grid obstacles.
               </p>
               <div class="flagship-tags-row">
                 <span class="flagship-tag-pill">C++20</span>
-                <span class="flagship-tag-pill">Graph Theory</span>
-                <span class="flagship-tag-pill">Priority Queue</span>
+                <span class="flagship-tag-pill">Graphs</span>
                 <span class="flagship-tag-pill">STL</span>
               </div>
             </div>
             <a href="https://github.com/VedanthPaspulwar/portfolio.git" target="_blank" rel="noopener noreferrer" class="flagship-card-action">
-              <span>Inspect Source Repository</span>
+              <span>Source Code</span>
               <span>&rarr;</span>
             </a>
           </div>
@@ -2822,22 +2823,21 @@
           <div class="flagship-card">
             <div>
               <div class="flagship-card-meta">
-                <span class="flagship-card-tag">Low-Level &bull; Memory</span>
+                <span class="flagship-card-tag">Systems</span>
                 <span class="flagship-card-metric">0B Heap Leaks</span>
               </div>
-              <h4 class="flagship-card-title">Custom POSIX Slab Allocator</h4>
+              <h4 class="flagship-card-title">POSIX Slab Allocator</h4>
               <p class="flagship-card-desc">
-                High-throughput memory manager featuring segregated free-list pools, boundary tag coalescing, and rigorous Valgrind/ASan verification.
+                Segregated memory pool manager with ASan verification.
               </p>
               <div class="flagship-tags-row">
                 <span class="flagship-tag-pill">C / C++</span>
-                <span class="flagship-tag-pill">Memory Pools</span>
                 <span class="flagship-tag-pill">POSIX</span>
                 <span class="flagship-tag-pill">Valgrind</span>
               </div>
             </div>
             <a href="https://github.com/VedanthPaspulwar/portfolio.git" target="_blank" rel="noopener noreferrer" class="flagship-card-action">
-              <span>Inspect Source Repository</span>
+              <span>Source Code</span>
               <span>&rarr;</span>
             </a>
           </div>
@@ -2846,22 +2846,21 @@
           <div class="flagship-card">
             <div>
               <div class="flagship-card-meta">
-                <span class="flagship-card-tag">Frontend &bull; Motion</span>
-                <span class="flagship-card-metric">60 FPS Fluid</span>
+                <span class="flagship-card-tag">Frontend</span>
+                <span class="flagship-card-metric">60 FPS</span>
               </div>
-              <h4 class="flagship-card-title">Scroll-Scrubbed Canvas Engine</h4>
+              <h4 class="flagship-card-title">Scroll Canvas Engine</h4>
               <p class="flagship-card-desc">
-                240-frame interactive 3D canvas pipeline featuring sub-pixel device pixel ratio rendering, edge feathering dissolve, and inertial velocity lerping.
+                240-frame 3D canvas pipeline with inertial velocity lerp.
               </p>
               <div class="flagship-tags-row">
-                <span class="flagship-tag-pill">HTML5 Canvas</span>
+                <span class="flagship-tag-pill">Canvas</span>
                 <span class="flagship-tag-pill">JavaScript</span>
-                <span class="flagship-tag-pill">Tailwind CSS</span>
-                <span class="flagship-tag-pill">Motion</span>
+                <span class="flagship-tag-pill">Tailwind</span>
               </div>
             </div>
             <a href="projects.html" class="flagship-card-action">
-              <span>Live Interactive View</span>
+              <span>Live View</span>
               <span>&rarr;</span>
             </a>
           </div>
@@ -2870,22 +2869,21 @@
           <div class="flagship-card">
             <div>
               <div class="flagship-card-meta">
-                <span class="flagship-card-tag">Fullstack &bull; Hackathon</span>
-                <span class="flagship-card-metric">48h Sprint MVP</span>
+                <span class="flagship-card-tag">Fullstack</span>
+                <span class="flagship-card-metric">48h MVP</span>
               </div>
-              <h4 class="flagship-card-title">Autonomous Agent Telemetry Hub</h4>
+              <h4 class="flagship-card-title">Agent Telemetry Hub</h4>
               <p class="flagship-card-desc">
-                Real-time WebSocket cluster dashboard tracking subagent health, concurrent process memory bounds, and responsive operational dispatch.
+                WebSocket cluster dashboard for real-time agent metrics.
               </p>
               <div class="flagship-tags-row">
                 <span class="flagship-tag-pill">Node.js</span>
                 <span class="flagship-tag-pill">WebSockets</span>
-                <span class="flagship-tag-pill">Tailwind CSS</span>
                 <span class="flagship-tag-pill">APIs</span>
               </div>
             </div>
             <a href="https://github.com/VedanthPaspulwar/portfolio.git" target="_blank" rel="noopener noreferrer" class="flagship-card-action">
-              <span>Inspect Source Repository</span>
+              <span>Source Code</span>
               <span>&rarr;</span>
             </a>
           </div>
