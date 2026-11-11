@@ -2098,6 +2098,41 @@
       text-decoration: underline;
     }
 
+    /* =========================================================
+       GLOBAL INTERACTIVE HOVER ON ALL BOLD WHITE HEADINGS
+       ========================================================= */
+    .display-title,
+    .prec-mini-title,
+    .flow-title,
+    .radar-col-title,
+    .os-hero-title,
+    .amber-showcase-title,
+    .phone-main-q,
+    .flagship-title,
+    .flagship-card-title {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.35s ease,
+                  color 0.35s ease;
+      cursor: pointer;
+    }
+
+    .display-title:hover,
+    .prec-mini-title:hover,
+    .flow-title:hover,
+    .radar-col-title:hover,
+    .os-hero-title:hover,
+    .amber-showcase-title:hover,
+    .phone-main-q:hover,
+    .flagship-title:hover,
+    .flagship-card-title:hover,
+    .flagship-card:hover .flagship-card-title {
+      transform: translateY(-2px) scale(1.015);
+      background: linear-gradient(135deg, #ffffff 0%, #00f5a0 45%, #a6ff00 75%, #ff529a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 25px rgba(0, 245, 160, 0.7)) drop-shadow(0 0 40px rgba(166, 255, 0, 0.35));
+    }
+
     @media (max-width: 900px) {
       .flagship-grid {
         grid-template-columns: 1fr;
