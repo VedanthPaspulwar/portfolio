@@ -2139,7 +2139,154 @@
       filter: drop-shadow(0 0 25px rgba(0, 245, 160, 0.7)) drop-shadow(0 0 40px rgba(166, 255, 0, 0.35));
     }
 
+    /* Next Page Action Gateway */
+    .next-page-gateway {
+      margin: 36px 0 24px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .btn-next-page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+      padding: 26px 32px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 245, 255, 0.08) 100%);
+      border: 1px solid rgba(0, 245, 255, 0.28);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-next-page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.15), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-next-page:hover::before {
+      left: 100%;
+    }
+
+    .btn-next-page:hover {
+      transform: translateY(-4px);
+      border-color: #00f5ff;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 245, 255, 0.18) 100%);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 245, 255, 0.35);
+    }
+
+    .next-page-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .next-page-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #00f5ff;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .next-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00f5ff;
+      box-shadow: 0 0 10px #00f5ff;
+      animation: pulseNextDot 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulseNextDot {
+      0%, 100% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    .next-page-title {
+      font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .next-page-title span {
+      color: #00f5ff;
+    }
+
+    .next-page-sub {
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.4;
+    }
+
+    .next-page-btn-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      background: #ffffff;
+      color: #060608;
+      font-size: 0.92rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-next-page:hover .next-page-btn-badge {
+      background: #00f5ff;
+      box-shadow: 0 0 25px rgba(0, 245, 255, 0.7);
+      transform: translateX(4px);
+    }
+
+    .next-arrow-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #060608;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-next-page:hover .next-arrow-circle {
+      transform: translateX(3px);
+    }
+
     @media (max-width: 900px) {
+      .btn-next-page {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 22px 20px;
+      }
+      .next-page-btn-badge {
+        width: 100%;
+        justify-content: space-between;
+      }
       .flagship-grid {
         grid-template-columns: 1fr;
       }
@@ -2260,6 +2407,7 @@
       <li><a href="index.html#home" class="nav-link">Home</a></li>
       <li><a href="index.html#skills" class="nav-link">Skills</a></li>
       <li><a href="projects.html" class="nav-link active">Portfolio</a></li>
+      <li><a href="particles.html" class="nav-link" style="color: #00f5ff;">3D Particles ✦</a></li>
       <li><a href="index.html#about" class="nav-link">About</a></li>
       <li><a href="index.html#contact" class="nav-link">Contact</a></li>
     </ul>
@@ -2931,6 +3079,26 @@
         </div>
       </div>
 
+      <!-- Next Experience Gateway: 3D Particle Cloud -->
+      <div class="next-page-gateway">
+        <a href="particles.html" class="btn-next-page">
+          <div class="next-page-left">
+            <div class="next-page-pill">
+              <span class="next-pulse-dot"></span>
+              <span>Next Experience // Page 03</span>
+            </div>
+            <h3 class="next-page-title">Interactive <span>3D Particle Cloud</span></h3>
+            <p class="next-page-sub">
+              20,000+ physics particles with cursor repulsion, 3D parallax tilt &amp; shockwave dynamics.
+            </p>
+          </div>
+          <div class="next-page-btn-badge">
+            <span>Next Page</span>
+            <span class="next-arrow-circle">→</span>
+          </div>
+        </a>
+      </div>
+
       <!-- Card 4: Sunset Glow Footer Card (Reference Mockup with "Vedanth") -->
       <footer class="vedanth-footer-card">
         <!-- Top Nav & Info Bar -->
@@ -2939,6 +3107,7 @@
           <nav class="vedanth-footer-nav" aria-label="Footer Navigation">
             <a href="index.html#home">Home</a>
             <a href="projects.html">Projects</a>
+            <a href="particles.html">3D Experience</a>
             <a href="index.html#skills">Solutions</a>
             <a href="index.html#contact">Contact us</a>
           </nav>
