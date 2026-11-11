@@ -829,13 +829,17 @@
       border-radius: 28px;
       overflow: hidden;
       aspect-ratio: 140 / 196;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #0f0b0c;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: transparent;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      opacity: 0.2;
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      cursor: pointer;
     }
 
     .card-item:hover {
+      opacity: 1;
+      background: #0f0b0c;
       transform: translateY(-6px);
       border-color: #D83A91;
       box-shadow: 0 26px 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(216, 58, 145, 0.25);
