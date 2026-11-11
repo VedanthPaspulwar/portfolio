@@ -1582,10 +1582,12 @@
 
     /* Transparent Cards - Direct on #0f0b0c background */
     .r-card {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(15, 11, 12, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      padding: 30px 28px;
+      padding: 24px 22px;
       transition: border-color 0.3s ease, transform 0.3s ease;
       position: relative;
     }
@@ -1710,18 +1712,17 @@
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
 
     .tool-badge {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px 8px;
+      padding: 10px 6px;
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
       text-align: center;
       transition: all 0.25s ease;
     }
@@ -1740,9 +1741,7 @@
     }
 
     .tool-category {
-      font-size: 0.65rem;
-      color: rgba(255, 255, 255, 0.4);
-      margin-top: 2px;
+      display: none;
     }
 
     /* Contact Details Block */
@@ -1777,10 +1776,8 @@
     /* Right Column: Skills & Circular Stamp Subrow */
     .skills-stamp-row {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 8px 12px 18px;
+      justify-content: flex-end;
+      padding: 0 12px 14px;
     }
 
     .stamp-container {
@@ -1815,42 +1812,35 @@
       color: #39e75f;
     }
 
-    .skills-checklist {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px 20px;
-      flex: 1;
-    }
-
-    .skill-check-item {
-      font-size: 0.84rem;
-      color: rgba(255, 255, 255, 0.75);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .skill-check-item::before {
-      content: '•';
-      color: #39e75f;
-      font-size: 1.1rem;
-    }
-
     /* Timeline Journey Card */
     .timeline-card {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(15, 11, 12, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      padding: 34px 30px;
+      padding: 26px 24px;
     }
 
     .timeline-list {
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 32px;
-      margin-top: 24px;
+      gap: 18px;
+      margin-top: 18px;
       padding-left: 20px;
+    }
+
+    .timeline-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+      text-transform: none;
     }
 
     .timeline-list::before {
@@ -2912,8 +2902,8 @@
           </div>
           <div class="resume-education-box">
             <span class="resume-section-label">Education</span>
-            <div class="resume-education-title">Bachelor of Technology in Computer Science &amp; Engineering</div>
-            <div class="resume-education-sub">B.Tech CSE • Class of '25</div>
+            <div class="resume-education-title">B.Tech in Computer Science</div>
+            <div class="resume-education-sub">Class of '25</div>
           </div>
         </div>
 
@@ -2927,12 +2917,11 @@
             <div class="r-card">
               <h3 class="r-card-title">Developer DNA</h3>
               <div class="dna-stats-list">
-                <div class="dna-stat-line accent-green">Multiple Hackathons.</div>
-                <div class="dna-stat-line">2nd Year CSE Undergrad.</div>
-                <div class="dna-stat-line accent-pink">One algorithmic mindset.</div>
+                <div class="dna-stat-line accent-green">2nd Year CSE Undergrad.</div>
+                <div class="dna-stat-line accent-pink">Hackathons &amp; C++ Systems.</div>
               </div>
               <p class="dna-bio-text">
-                Bridging low-level systems with sleek, responsive web architecture.
+                Bridging low-level systems with modern web architecture.
               </p>
             </div>
 
@@ -2946,53 +2935,23 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="plc-title">Portfolio &amp; Repositories</div>
-                  <div class="plc-sub">Open-source &amp; sprint repositories</div>
+                  <div class="plc-title">Repositories</div>
+                  <div class="plc-sub">GitHub open-source projects</div>
                 </div>
               </div>
               <span class="plc-arrow">↗</span>
             </a>
 
-            <!-- Card: Tech & Tools (Replacing Mega Clients) -->
+            <!-- Card: Tech & Tools (Streamlined) -->
             <div class="r-card">
-              <h3 class="r-card-title">Tech Stack &amp; Tools</h3>
+              <h3 class="r-card-title">Tech Stack</h3>
               <div class="tools-grid">
-                <div class="tool-badge">
-                  <span class="tool-name">C / C++</span>
-                  <span class="tool-category">Systems</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">DSA</span>
-                  <span class="tool-category">Algorithms</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">Tailwind</span>
-                  <span class="tool-category">CSS Engine</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">HTML5</span>
-                  <span class="tool-category">Semantics</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">CSS3</span>
-                  <span class="tool-category">Styling</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">Git &amp; GitHub</span>
-                  <span class="tool-category">Version Ctrl</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">VS Code</span>
-                  <span class="tool-category">IDE</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">Linux / Bash</span>
-                  <span class="tool-category">Environment</span>
-                </div>
-                <div class="tool-badge">
-                  <span class="tool-name">OOP</span>
-                  <span class="tool-category">Architecture</span>
-                </div>
+                <div class="tool-badge"><span class="tool-name">C &amp; C++</span></div>
+                <div class="tool-badge"><span class="tool-name">DSA</span></div>
+                <div class="tool-badge"><span class="tool-name">Tailwind</span></div>
+                <div class="tool-badge"><span class="tool-name">HTML/CSS</span></div>
+                <div class="tool-badge"><span class="tool-name">Git</span></div>
+                <div class="tool-badge"><span class="tool-name">Linux</span></div>
               </div>
             </div>
 
@@ -3003,12 +2962,8 @@
                 <span>vedanth.dev@gmail.com</span>
               </a>
               <div class="resume-contact-item">
-                <span class="rci-icon">⚡</span>
-                <span>Open for Summer Internships &amp; Hackathon Teams</span>
-              </div>
-              <div class="resume-contact-item">
                 <span class="rci-icon">📍</span>
-                <span>India • B.Tech CSE Undergrad</span>
+                <span>India • Open for Internships</span>
               </div>
             </div>
 
@@ -3017,20 +2972,8 @@
           <!-- Right Column -->
           <div class="resume-col-right">
 
-            <!-- Skills & Rotating Circular Stamp Row -->
+            <!-- Circular Stamp (Cleanly positioned to not block the face) -->
             <div class="skills-stamp-row">
-              <div class="skills-checklist">
-                <div class="skill-check-item">C &amp; C++ Programming</div>
-                <div class="skill-check-item">Data Structures &amp; Algorithms</div>
-                <div class="skill-check-item">Tailwind CSS &amp; Modern UI</div>
-                <div class="skill-check-item">HTML5 &amp; Modern CSS3</div>
-                <div class="skill-check-item">Rapid MVP Prototyping</div>
-                <div class="skill-check-item">Git &amp; GitHub Workflows</div>
-                <div class="skill-check-item">Problem Solving &amp; Debugging</div>
-                <div class="skill-check-item">Hackathon Sprint Execution</div>
-              </div>
-
-              <!-- Rotating Stamp Doodle -->
               <div class="stamp-container">
                 <svg class="stamp-svg" viewBox="0 0 160 160">
                   <defs>
@@ -3055,41 +2998,33 @@
 
                 <!-- Milestone 1 -->
                 <div class="timeline-item">
-                  <div class="timeline-role">Hackathon Competitor &amp; Builder</div>
-                  <div class="timeline-org">Hackathons &amp; Buildathon Sprints</div>
-                  <div class="timeline-meta">2024 – Present • Sprint Builds</div>
+                  <div class="timeline-role">Hackathons &amp; MVPs <span class="timeline-tag">2024</span></div>
                   <p class="timeline-desc">
-                    Ideated and shipped functional web MVPs in 24–48h sprints.
+                    Shipped functional web MVPs in rapid 24–48h sprints.
                   </p>
                 </div>
 
                 <!-- Milestone 2 -->
                 <div class="timeline-item">
-                  <div class="timeline-role">Frontend &amp; Responsive Web UI</div>
-                  <div class="timeline-org">Modern Web Applications</div>
-                  <div class="timeline-meta">2024 – Present • UI / UX</div>
+                  <div class="timeline-role">Frontend &amp; UI <span class="timeline-tag">2024</span></div>
                   <p class="timeline-desc">
-                    Responsive layouts, fluid animations, and component design.
+                    Responsive Tailwind layouts and modern web applications.
                   </p>
                 </div>
 
                 <!-- Milestone 3 -->
                 <div class="timeline-item">
-                  <div class="timeline-role">Systems &amp; Algorithmic Programming</div>
-                  <div class="timeline-org">Core Computer Science</div>
-                  <div class="timeline-meta">2023 – Present • Problem Solving</div>
+                  <div class="timeline-role">Systems &amp; DSA <span class="timeline-tag">2023</span></div>
                   <p class="timeline-desc">
-                    Memory management, pointers, and DSA problem solving.
+                    C/C++ memory management and algorithmic problem solving.
                   </p>
                 </div>
 
                 <!-- Milestone 4 -->
                 <div class="timeline-item">
-                  <div class="timeline-role">B.Tech Computer Science &amp; Engineering</div>
-                  <div class="timeline-org">Undergraduate Degree</div>
-                  <div class="timeline-meta">Class of '25 • Academics</div>
+                  <div class="timeline-role">B.Tech CSE <span class="timeline-tag">'25</span></div>
                   <p class="timeline-desc">
-                    Core coursework: DSA, OOP, OS, and System Architecture.
+                    Core coursework: DSA, OS, and System Architecture.
                   </p>
                 </div>
 
