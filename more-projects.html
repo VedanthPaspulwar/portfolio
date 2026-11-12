@@ -18,15 +18,40 @@
       padding: 0;
     }
 
-    html, body {
+    html {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: #060608;
+    }
+
+    body {
+      width: 100%;
+      min-height: 550vh;
+      height: 550vh;
       background-color: #060608;
       color: #ffffff;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow-x: hidden;
+      position: relative;
       user-select: none;
       -webkit-user-select: none;
+    }
+
+    /* Minimal Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060608;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 245, 255, 0.4);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00f5ff;
     }
 
     /* Fixed Fullscreen Canvas */
@@ -39,34 +64,27 @@
       display: block;
       z-index: 1;
       background: #060608;
+      pointer-events: none; /* Allows wheel & scroll to pass cleanly */
     }
 
-    /* Scroll Height Track (500vh for smooth 300-frame scrubbing) */
-    .scroll-container {
-      position: relative;
-      width: 100%;
-      height: 520vh;
-      pointer-events: none;
-    }
-
-    /* Top Progress Bar */
+    /* Top Clickable Interactive Progress Bar */
     .progress-bar-wrap {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.05);
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
       z-index: 100;
-      pointer-events: none;
+      cursor: pointer;
     }
 
     .progress-bar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #00f5ff, #0077ff, #ff007f);
-      box-shadow: 0 0 10px rgba(0, 245, 255, 0.7);
-      transition: width 0.05s linear;
+      background: linear-gradient(90deg, #00f5ff 0%, #0077ff 60%, #ff007f 100%);
+      box-shadow: 0 0 12px rgba(0, 245, 255, 0.85);
+      transition: width 0.04s linear;
     }
 
     /* Top Floating Controls Bar */
@@ -88,10 +106,10 @@
       align-items: center;
       gap: 10px;
       padding: 10px 22px;
-      background: rgba(12, 10, 16, 0.65);
+      background: rgba(12, 10, 16, 0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 9999px;
       color: #ffffff;
       font-size: 0.86rem;
@@ -102,11 +120,11 @@
     }
 
     .btn-back:hover {
-      background: rgba(0, 245, 255, 0.15);
+      background: rgba(0, 245, 255, 0.16);
       border-color: #00f5ff;
       color: #00f5ff;
       transform: translateX(-3px);
-      box-shadow: 0 8px 32px rgba(0, 245, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 245, 255, 0.35);
     }
 
     .btn-back .back-arrow {
@@ -123,15 +141,15 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 16px;
-      background: rgba(12, 10, 16, 0.65);
+      padding: 8px 18px;
+      background: rgba(12, 10, 16, 0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 9999px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.85);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     }
 
@@ -141,12 +159,12 @@
       border-radius: 50%;
       background: #00f5ff;
       box-shadow: 0 0 8px #00f5ff;
-      animation: pulseGlow 2s infinite ease-in-out;
+      animation: pulseGlow 1.8s infinite ease-in-out;
     }
 
     @keyframes pulseGlow {
       0%, 100% { opacity: 0.5; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.2); }
+      50% { opacity: 1; transform: scale(1.25); }
     }
 
     .frame-num {
@@ -163,17 +181,17 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 9px 20px;
-      background: rgba(12, 10, 16, 0.7);
+      padding: 10px 22px;
+      background: rgba(12, 10, 16, 0.75);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 9999px;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.8);
       z-index: 90;
       pointer-events: none;
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
@@ -186,6 +204,7 @@
       display: inline-block;
       animation: bounceDown 1.8s infinite ease-in-out;
       color: #00f5ff;
+      font-weight: 800;
     }
 
     @keyframes bounceDown {
@@ -199,8 +218,8 @@
   <!-- Fullscreen Frame Scrubber Canvas -->
   <canvas id="scrollCanvas"></canvas>
 
-  <!-- Top Progress Bar -->
-  <div class="progress-bar-wrap">
+  <!-- Top Progress Bar (Clickable to jump) -->
+  <div class="progress-bar-wrap" id="progressWrap" title="Click anywhere to jump in sequence">
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
@@ -219,12 +238,9 @@
 
   <!-- Scroll Hint Pill -->
   <div class="scroll-hint" id="scrollHint">
-    <span>Scroll down to play sequence</span>
+    <span>Scroll or Drag down to play sequence</span>
     <span class="scroll-icon">↓</span>
   </div>
-
-  <!-- Virtual Scroll Space -->
-  <div class="scroll-container"></div>
 
   <script>
     (function () {
@@ -234,6 +250,7 @@
       const canvas = document.getElementById('scrollCanvas');
       const ctx = canvas.getContext('2d', { alpha: false });
       const progressBar = document.getElementById('progressBar');
+      const progressWrap = document.getElementById('progressWrap');
       const frameDisplay = document.getElementById('frameDisplay');
       const scrollHint = document.getElementById('scrollHint');
 
@@ -248,20 +265,27 @@
         return `more-frames/ezgif-frame-${num}.jpg`;
       }
 
-      // Preload Frame 0 first for instant display
+      // Preload all frames progressively
       function init() {
-        const f0 = new Image();
-        f0.src = getFramePath(0);
-        frames[0] = f0;
-        f0.onload = () => {
-          render(0);
-        };
-
-        // Preload remaining frames progressively
-        for (let i = 1; i < TOTAL_FRAMES; i++) {
+        for (let i = 0; i < TOTAL_FRAMES; i++) {
           const img = new Image();
+          img.onload = () => {
+            // If this is the current target frame, render immediately
+            if (Math.round(currentFrame) === i) {
+              render(i);
+            }
+          };
           img.src = getFramePath(i);
           frames[i] = img;
+        }
+
+        // Render frame 0 as soon as it loads
+        if (frames[0]) {
+          if (frames[0].complete && frames[0].naturalWidth > 0) {
+            render(0);
+          } else {
+            frames[0].onload = () => render(0);
+          }
         }
       }
 
@@ -279,7 +303,7 @@
           return img;
         }
 
-        // Closest loaded fallback to prevent flicker
+        // Search closest loaded neighbor to prevent blank/flicker
         for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
           const prev = idx - offset;
           if (prev >= 0 && frames[prev]?.complete && frames[prev]?.naturalWidth > 0) {
@@ -313,7 +337,7 @@
 
         let dw, dh, dx, dy;
 
-        // Cover fit: immersive edge-to-edge full canvas
+        // Cinematic Cover Fit (Full Edge-to-Edge)
         if (screenRatio > imgRatio) {
           dw = cw;
           dh = Math.round(cw / imgRatio);
@@ -329,20 +353,29 @@
         ctx.drawImage(img, dx, dy, dw, dh);
       }
 
-      // Scroll listener: map page scroll to frame range
-      function onScroll() {
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        if (scrollable <= 0) return;
+      // Calculate Scroll Progress
+      function updateScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const scrollHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight
+        );
+        const scrollable = scrollHeight - window.innerHeight;
 
-        const progress = Math.max(0, Math.min(1, window.scrollY / scrollable));
-        targetFrame = progress * (TOTAL_FRAMES - 1);
+        if (scrollable > 0) {
+          const progress = Math.max(0, Math.min(1, scrollTop / scrollable));
+          targetFrame = progress * (TOTAL_FRAMES - 1);
+        }
 
         if (progressBar) {
-          progressBar.style.width = (progress * 100) + '%';
+          const pct = ((targetFrame / (TOTAL_FRAMES - 1)) * 100).toFixed(2);
+          progressBar.style.width = pct + '%';
         }
 
         if (scrollHint) {
-          if (window.scrollY > 40) {
+          if (scrollTop > 40) {
             scrollHint.classList.add('hidden');
           } else {
             scrollHint.classList.remove('hidden');
@@ -350,11 +383,11 @@
         }
       }
 
-      // Smooth Lerp Animation Loop (60+ FPS)
+      // Smooth Lerp Animation Loop (Buttery 60+ FPS)
       function tick() {
         const diff = targetFrame - currentFrame;
         if (Math.abs(diff) > 0.001) {
-          currentFrame += diff * 0.14;
+          currentFrame += diff * 0.16;
           const rounded = Math.round(currentFrame);
           render(rounded);
 
@@ -365,11 +398,56 @@
         requestAnimationFrame(tick);
       }
 
+      // Interactive Click/Tap on Progress Bar to jump in sequence
+      if (progressWrap) {
+        progressWrap.addEventListener('click', (e) => {
+          const rect = progressWrap.getBoundingClientRect();
+          const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+          const scrollHeight = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight
+          ) - window.innerHeight;
+          window.scrollTo({ top: ratio * scrollHeight, behavior: 'smooth' });
+        });
+      }
+
+      // Keyboard Controls (Arrow keys, Space, PageUp/Down)
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+          window.scrollBy({ top: 180, behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+          window.scrollBy({ top: -180, behavior: 'smooth' });
+        }
+      });
+
+      // Mouse drag scrub support
+      let isDragging = false;
+      let startY = 0;
+      let startScroll = 0;
+
+      window.addEventListener('mousedown', (e) => {
+        if (e.target.closest('a') || e.target.closest('#progressWrap')) return;
+        isDragging = true;
+        startY = e.clientY;
+        startScroll = window.pageYOffset || document.documentElement.scrollTop;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const delta = (startY - e.clientY) * 2.5;
+        window.scrollTo({ top: startScroll + delta });
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
       window.addEventListener('resize', resize, { passive: true });
-      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('scroll', updateScroll, { passive: true });
 
       init();
       resize();
+      updateScroll();
       requestAnimationFrame(tick);
     })();
   </script>
