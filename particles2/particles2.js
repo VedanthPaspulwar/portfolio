@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 3D Particle Point Cloud Physics Engine
  * High-performance 60+ FPS zero-allocation interactive simulation
  */
@@ -54,7 +54,7 @@
   let height = (canvas.height = window.innerHeight);
   let cx = width / 2;
   let cy = height / 2;
-  let baseWorldScale = Math.min(width, height) * 0.72;
+  let baseWorldScale = Math.min(width, height) * 0.86;
 
   // Mouse State
   const mouse = {
@@ -153,23 +153,23 @@
       }
       case 'cosmic':
       default: {
-        // Nebula: white core → violet/indigo edges → rainbow streaks
+        // Celestial Eagle: Pure Diamond White Core -> Icy Cyan Starlight Wings -> Deep Nebula Indigo Tail
         const lum = brightness;
-        if (lum > 0.75) {
-          // Bright stars: pure white
-          const w = Math.floor(220 + lum * 35);
-          return `rgba(${w}, ${w}, ${w}, ${alpha})`;
-        } else if (lum > 0.45) {
-          // Mid: electric violet-blue
-          const r = Math.floor(140 + lum * 115);
-          const g = Math.floor(90 + lum * 100);
-          const b = Math.floor(220 + lum * 35);
+        if (lum > 0.70) {
+          // Brilliant starlight white / eagle head focal point
+          const w = Math.min(255, Math.floor(235 + lum * 25));
+          return `rgba(${w}, ${Math.min(255, w + 3)}, 255, ${alpha})`;
+        } else if (lum > 0.40) {
+          // Luminous celestial icy cyan & electric starlight blue
+          const r = Math.floor(90 + lum * 90);
+          const g = Math.floor(190 + lum * 65);
+          const b = 255;
           return `rgba(${r}, ${g}, ${b}, ${alpha})`;
         } else {
-          // Dim: deep indigo/nebula teal
-          const r2 = Math.floor(60 + lum * 120);
-          const g2 = Math.floor(80 + lum * 140);
-          const b2 = Math.floor(180 + lum * 75);
+          // Deep cosmic nebula indigo / stardust tendrils
+          const r2 = Math.floor(65 + lum * 120);
+          const g2 = Math.floor(95 + lum * 130);
+          const b2 = Math.floor(195 + lum * 60);
           return `rgba(${r2}, ${g2}, ${b2}, ${alpha})`;
         }
       }
@@ -419,7 +419,7 @@
     height = canvas.height = window.innerHeight;
     cx = width / 2;
     cy = height / 2;
-    baseWorldScale = Math.min(width, height) * 0.72;
+    baseWorldScale = Math.min(width, height) * 0.86;
   });
 
   window.addEventListener('mousemove', e => {
