@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Projects — Visual Sequence | Vedanth</title>
+  <meta name="description" content="Cinematic 300-frame scroll-scrubbed interactive sequence by Vedanth.">
+  <meta name="theme-color" content="#060608">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #060608;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Fixed Fullscreen Canvas */
+    #scrollCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      z-index: 1;
+      background: #060608;
+    }
+
+    /* Scroll Height Track (500vh for smooth 300-frame scrubbing) */
+    .scroll-container {
+      position: relative;
+      width: 100%;
+      height: 520vh;
+      pointer-events: none;
+    }
+
+    /* Top Progress Bar */
+    .progress-bar-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.05);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00f5ff, #0077ff, #ff007f);
+      box-shadow: 0 0 10px rgba(0, 245, 255, 0.7);
+      transition: width 0.05s linear;
+    }
+
+    /* Top Floating Controls Bar */
+    .top-bar {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 90;
+      pointer-events: none;
+    }
+
+    .btn-back {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      background: rgba(12, 10, 16, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      color: #ffffff;
+      font-size: 0.86rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-back:hover {
+      background: rgba(0, 245, 255, 0.15);
+      border-color: #00f5ff;
+      color: #00f5ff;
+      transform: translateX(-3px);
+      box-shadow: 0 8px 32px rgba(0, 245, 255, 0.3);
+    }
+
+    .btn-back .back-arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-back:hover .back-arrow {
+      transform: translateX(-3px);
+    }
+
+    /* Frame Counter Pill */
+    .frame-pill {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(12, 10, 16, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .frame-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00f5ff;
+      box-shadow: 0 0 8px #00f5ff;
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .frame-num {
+      color: #00f5ff;
+      font-weight: 700;
+    }
+
+    /* Floating Scroll Instruction Pill at Bottom */
+    .scroll-hint {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 20px;
+      background: rgba(12, 10, 16, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.75);
+      z-index: 90;
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .scroll-hint.hidden {
+      opacity: 0;
+      transform: translate(-50%, 15px);
+    }
+
+    .scroll-icon {
+      display: inline-block;
+      animation: bounceDown 1.8s infinite ease-in-out;
+      color: #00f5ff;
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Frame Scrubber Canvas -->
+  <canvas id="scrollCanvas"></canvas>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Top Floating Controls -->
+  <header class="top-bar">
+    <a href="projects.html" class="btn-back">
+      <span class="back-arrow">←</span>
+      <span>Projects Deck</span>
+    </a>
+
+    <div class="frame-pill">
+      <span class="frame-dot"></span>
+      <span>Frame <span class="frame-num" id="frameDisplay">001</span> / 300</span>
+    </div>
+  </header>
+
+  <!-- Scroll Hint Pill -->
+  <div class="scroll-hint" id="scrollHint">
+    <span>Scroll down to play sequence</span>
+    <span class="scroll-icon">↓</span>
+  </div>
+
+  <!-- Virtual Scroll Space -->
+  <div class="scroll-container"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const TOTAL_FRAMES = 300;
+      const canvas = document.getElementById('scrollCanvas');
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const progressBar = document.getElementById('progressBar');
+      const frameDisplay = document.getElementById('frameDisplay');
+      const scrollHint = document.getElementById('scrollHint');
+
+      const frames = new Array(TOTAL_FRAMES);
+      let targetFrame = 0;
+      let currentFrame = 0;
+      let lastRenderedIndex = 0;
+      let dpr = 1;
+
+      function getFramePath(index) {
+        const num = String(index + 1).padStart(3, '0');
+        return `more-frames/ezgif-frame-${num}.jpg`;
+      }
+
+      // Preload Frame 0 first for instant display
+      function init() {
+        const f0 = new Image();
+        f0.src = getFramePath(0);
+        frames[0] = f0;
+        f0.onload = () => {
+          render(0);
+        };
+
+        // Preload remaining frames progressively
+        for (let i = 1; i < TOTAL_FRAMES; i++) {
+          const img = new Image();
+          img.src = getFramePath(i);
+          frames[i] = img;
+        }
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(window.innerWidth * dpr);
+        canvas.height = Math.round(window.innerHeight * dpr);
+        render(Math.round(currentFrame));
+      }
+
+      function getBestImage(idx) {
+        let img = frames[idx];
+        if (img && img.complete && img.naturalWidth > 0) {
+          lastRenderedIndex = idx;
+          return img;
+        }
+
+        // Closest loaded fallback to prevent flicker
+        for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+          const prev = idx - offset;
+          if (prev >= 0 && frames[prev]?.complete && frames[prev]?.naturalWidth > 0) {
+            lastRenderedIndex = prev;
+            return frames[prev];
+          }
+          const next = idx + offset;
+          if (next < TOTAL_FRAMES && frames[next]?.complete && frames[next]?.naturalWidth > 0) {
+            lastRenderedIndex = next;
+            return frames[next];
+          }
+        }
+
+        return frames[lastRenderedIndex] || frames[0];
+      }
+
+      function render(frameIdx) {
+        const img = getBestImage(frameIdx);
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+
+        ctx.fillStyle = '#060608';
+        ctx.fillRect(0, 0, cw, ch);
+
+        const imgW = img.naturalWidth;
+        const imgH = img.naturalHeight;
+        const imgRatio = imgW / imgH;
+        const screenRatio = cw / ch;
+
+        let dw, dh, dx, dy;
+
+        // Cover fit: immersive edge-to-edge full canvas
+        if (screenRatio > imgRatio) {
+          dw = cw;
+          dh = Math.round(cw / imgRatio);
+          dx = 0;
+          dy = Math.round((ch - dh) / 2);
+        } else {
+          dh = ch;
+          dw = Math.round(ch * imgRatio);
+          dx = Math.round((cw - dw) / 2);
+          dy = 0;
+        }
+
+        ctx.drawImage(img, dx, dy, dw, dh);
+      }
+
+      // Scroll listener: map page scroll to frame range
+      function onScroll() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+
+        const progress = Math.max(0, Math.min(1, window.scrollY / scrollable));
+        targetFrame = progress * (TOTAL_FRAMES - 1);
+
+        if (progressBar) {
+          progressBar.style.width = (progress * 100) + '%';
+        }
+
+        if (scrollHint) {
+          if (window.scrollY > 40) {
+            scrollHint.classList.add('hidden');
+          } else {
+            scrollHint.classList.remove('hidden');
+          }
+        }
+      }
+
+      // Smooth Lerp Animation Loop (60+ FPS)
+      function tick() {
+        const diff = targetFrame - currentFrame;
+        if (Math.abs(diff) > 0.001) {
+          currentFrame += diff * 0.14;
+          const rounded = Math.round(currentFrame);
+          render(rounded);
+
+          if (frameDisplay) {
+            frameDisplay.textContent = String(rounded + 1).padStart(3, '0');
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      init();
+      resize();
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+</html>
