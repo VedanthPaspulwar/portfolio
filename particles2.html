@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Being — 3D Particle Cloud | Vedanth</title>
+  <meta name="description" content="Interactive 3D particle cloud — cosmic star being simulation with real-time mouse repulsion, spring physics, perspective tilt, and shockwave dynamics.">
+  <meta name="theme-color" content="#030308">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="particles2/style2.css">
+</head>
+<body>
+
+  <!-- Fullscreen Interactive 3D Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Custom Cursor Glow Ring -->
+  <div id="cursorRing"></div>
+  <div id="cursorDot"></div>
+
+  <!-- Top Floating Controls Bar -->
+  <header class="top-controls">
+    <a href="particles.html" class="btn-back">
+      <span class="back-arrow">←</span>
+      <span>Face Mesh</span>
+    </a>
+
+    <!-- Settings Gear Icon -->
+    <button class="btn-settings-toggle" id="settingsToggle" aria-label="Toggle Physics Settings">
+      <svg viewBox="0 0 24 24">
+        <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Interactive Hint Floating Pill -->
+  <div class="hint-badge" id="hintBadge">
+    <span class="hint-dot"></span>
+    <span>Move cursor to repel • Click for shockwave • Space to scatter</span>
+  </div>
+
+  <!-- Collapsible Settings Drawer -->
+  <aside class="settings-drawer" id="settingsDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <div>
+          <span class="drawer-tag">// COSMIC CORE</span>
+          <h2 class="drawer-title">Particle Controls</h2>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="drawerClose" aria-label="Close Settings">✕</button>
+    </div>
+
+    <!-- Interaction Mode -->
+    <div class="drawer-section">
+      <span class="section-label">Interaction Mode</span>
+      <div class="modes-grid">
+        <button class="btn-mode active" data-mode="repel">Repel</button>
+        <button class="btn-mode" data-mode="attract">Attract</button>
+        <button class="btn-mode" data-mode="vortex">Vortex</button>
+      </div>
+    </div>
+
+    <!-- Color Presets -->
+    <div class="drawer-section">
+      <span class="section-label">Color Preset</span>
+      <div class="presets-grid">
+        <button class="btn-preset active" data-preset="cosmic">
+          <span class="preset-dot" style="background: linear-gradient(135deg,#fff,#a78bfa); box-shadow: 0 0 6px #a78bfa;"></span>
+          <span>Cosmic</span>
+        </button>
+        <button class="btn-preset" data-preset="white">
+          <span class="preset-dot" style="background: #ffffff; box-shadow: 0 0 6px #fff;"></span>
+          <span>White</span>
+        </button>
+        <button class="btn-preset" data-preset="cyan">
+          <span class="preset-dot" style="background: #00f5ff; box-shadow: 0 0 6px #00f5ff;"></span>
+          <span>Cyan</span>
+        </button>
+        <button class="btn-preset" data-preset="synthwave">
+          <span class="preset-dot" style="background: #ff007f; box-shadow: 0 0 6px #ff007f;"></span>
+          <span>Neon</span>
+        </button>
+        <button class="btn-preset" data-preset="gold">
+          <span class="preset-dot" style="background: #ffaa00; box-shadow: 0 0 6px #ffaa00;"></span>
+          <span>Gold</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sliders -->
+    <div class="drawer-section">
+      <span class="section-label">Dynamics &amp; Geometry</span>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Spread Radius</span>
+          <span class="slider-val" id="valRadius">150px</span>
+        </div>
+        <input type="range" class="custom-range" id="sliderRadius" min="60" max="320" value="150" step="5">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Force Power</span>
+          <span class="slider-val" id="valPower">8</span>
+        </div>
+        <input type="range" class="custom-range" id="sliderPower" min="1" max="22" value="8" step="1">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Spring Return</span>
+          <span class="slider-val" id="valSpring">0.055</span>
+        </div>
+        <input type="range" class="custom-range" id="sliderSpring" min="0.01" max="0.16" value="0.055" step="0.005">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Dot Size</span>
+          <span class="slider-val" id="valSize">1.5px</span>
+        </div>
+        <input type="range" class="custom-range" id="sliderSize" min="0.8" max="4.0" value="1.5" step="0.2">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">3D Tilt Angle</span>
+          <span class="slider-val" id="valTilt">0.45</span>
+        </div>
+        <input type="range" class="custom-range" id="sliderTilt" min="0" max="1.0" value="0.45" step="0.05">
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="drawer-section">
+      <span class="section-label">Simulate Events</span>
+      <div class="actions-row">
+        <button class="btn-action-primary" id="btnScatter">Scatter Wave</button>
+        <button class="btn-action-secondary" id="btnReset">Reset</button>
+      </div>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="drawer-footer">
+      <span id="particleCount">19,150 Particles</span>
+      <span class="fps-counter" id="fpsDisplay">60 FPS</span>
+    </div>
+  </aside>
+
+  <!-- Point Cloud Data & Physics Engine Scripts -->
+  <script src="particles2/data2.js"></script>
+  <script src="particles2/particles2.js"></script>
+</body>
+</html>

@@ -133,6 +133,45 @@ html, body {
   transform: translateX(-3px);
 }
 
+/* Next Page Button */
+.btn-next-page {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(167, 139, 250, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 9999px;
+  color: #c4b5fd;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(167, 139, 250, 0.1);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn-next-page:hover {
+  background: rgba(167, 139, 250, 0.2);
+  border-color: #a78bfa;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(167, 139, 250, 0.35), 0 0 30px rgba(167, 139, 250, 0.2);
+  transform: translateX(-50%) scale(1.04);
+}
+
+.next-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-next-page:hover .next-arrow {
+  transform: translateX(3px);
+}
+
 /* Subtle Interactive Tip Hint (Fades out after interaction) */
 .hint-badge {
   position: fixed;
