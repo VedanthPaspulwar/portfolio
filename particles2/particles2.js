@@ -44,17 +44,25 @@
     repulsionPower: 8,
     springSpeed: 0.055,
     damping: 0.88,
-    dotSize: 1.5,
+    dotSize: 2.0,
     tiltSensitivity: 0.45,
     fov: 650
   };
+
+  function computeWorldScale() {
+    // Fits eagle to viewport: balanced proportion — not too big, not too small
+    // Height span is 1.00, Width span is 0.628
+    const scaleFromHeight = (height * 0.78) / 1.00;
+    const scaleFromWidth = (width * 0.86) / 0.628;
+    return Math.min(scaleFromHeight, scaleFromWidth);
+  }
 
   // Canvas Dimensions
   let width = (canvas.width = window.innerWidth);
   let height = (canvas.height = window.innerHeight);
   let cx = width / 2;
   let cy = height / 2;
-  let baseWorldScale = Math.min(width, height) * 0.86;
+  let baseWorldScale = computeWorldScale();
 
   // Mouse State
   const mouse = {
@@ -343,7 +351,7 @@
       const z2 = y * sinX + z1 * cosX;
 
       // Perspective Projection
-      const pScale = config.fov / (config.fov + z2 * baseWorldScale);
+      const pScale = config.fov / (config.fov + z2 * baseWorldScale * 0.35);
       const screenX = cx + x1 * baseWorldScale * pScale;
       const screenY = cy + y1 * baseWorldScale * pScale;
 
@@ -419,7 +427,7 @@
     height = canvas.height = window.innerHeight;
     cx = width / 2;
     cy = height / 2;
-    baseWorldScale = Math.min(width, height) * 0.86;
+    baseWorldScale = computeWorldScale();
   });
 
   window.addEventListener('mousemove', e => {
