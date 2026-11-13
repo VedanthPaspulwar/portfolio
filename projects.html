@@ -1735,82 +1735,6 @@
       transform: translateX(3px);
     }
 
-    /* More Projects Trigger Button */
-    .more-projects-btn-wrap {
-      display: flex;
-      justify-content: center;
-      margin-top: 36px;
-      margin-bottom: 8px;
-      width: 100%;
-    }
-
-    .btn-more-projects {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 38px;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 245, 255, 0.12) 100%);
-      border: 1px solid rgba(0, 245, 255, 0.35);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      color: #ffffff;
-      font-size: 0.98rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 245, 255, 0.15);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-more-projects::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.25), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .btn-more-projects:hover::before {
-      left: 100%;
-    }
-
-    .btn-more-projects:hover {
-      transform: translateY(-3px) scale(1.03);
-      border-color: #00f5ff;
-      background: linear-gradient(135deg, rgba(0, 245, 255, 0.2) 0%, rgba(0, 119, 255, 0.2) 100%);
-      color: #00f5ff;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 245, 255, 0.45);
-    }
-
-    .more-pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #00f5ff;
-      box-shadow: 0 0 10px #00f5ff;
-      animation: pulseDotGlow 1.8s infinite ease-in-out;
-    }
-
-    @keyframes pulseDotGlow {
-      0%, 100% { transform: scale(0.9); opacity: 0.6; }
-      50% { transform: scale(1.3); opacity: 1; }
-    }
-
-    .more-arrow {
-      font-size: 1.15rem;
-      transition: transform 0.25s ease;
-      color: #00f5ff;
-    }
-
-    .btn-more-projects:hover .more-arrow {
-      transform: translateX(4px);
-    }
 
     @media (max-width: 900px) {
       .btn-next-page {
@@ -2538,14 +2462,7 @@
           </div>
         </div>
 
-        <!-- More Projects Trigger Button -->
-        <div class="more-projects-btn-wrap">
-          <a href="more-projects.html" class="btn-more-projects">
-            <span class="more-pulse-dot"></span>
-            <span>More Projects</span>
-            <span class="more-arrow">→</span>
-          </a>
-        </div>
+
       </div>
 
       <!-- Next Experience Gateway: 3D Particle Cloud -->
@@ -2576,7 +2493,6 @@
           <nav class="vedanth-footer-nav" aria-label="Footer Navigation">
             <a href="index.html#home">Home</a>
             <a href="projects.html">Projects</a>
-            <a href="more-projects.html">More Projects</a>
             <a href="particles.html">3D Experience</a>
             <a href="index.html#skills">Solutions</a>
             <a href="index.html#contact">Contact us</a>
