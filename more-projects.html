@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cinematic Ocean Exploration UI — Vedanth</title>
-  <meta name="description" content="Cinematic Ocean Exploration UI concept & interactive 300-frame scroll-scrubbed engineering sequence by Vedanth Paspulwar.">
+  <title>More Projects — Visual Sequence | Vedanth</title>
+  <meta name="description" content="Cinematic 300-frame scroll-scrubbed interactive sequence by Vedanth.">
   <meta name="theme-color" content="#060608">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after {
@@ -28,12 +28,15 @@
 
     body {
       width: 100%;
-      min-height: 480vh;
+      min-height: 550vh;
+      height: 550vh;
       background-color: #060608;
       color: #ffffff;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow-x: hidden;
       position: relative;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     /* Minimal Custom Scrollbar */
@@ -51,7 +54,7 @@
       background: #00f5ff;
     }
 
-    /* Fixed Fullscreen Background Canvas (300 Frames) */
+    /* Fixed Fullscreen Canvas */
     #scrollCanvas {
       position: fixed;
       top: 0;
@@ -61,19 +64,7 @@
       display: block;
       z-index: 1;
       background: #060608;
-      pointer-events: none;
-    }
-
-    /* Subtle Dark Vignette & Screen Tint for High Contrast */
-    .canvas-overlay-tint {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(ellipse at 50% 45%, rgba(6, 6, 8, 0.45) 0%, rgba(6, 6, 8, 0.85) 85%);
-      pointer-events: none;
-      z-index: 2;
+      pointer-events: none; /* Allows wheel & scroll to pass cleanly */
     }
 
     /* Top Clickable Interactive Progress Bar */
@@ -96,7 +87,7 @@
       transition: width 0.04s linear;
     }
 
-    /* Top Floating Navigation Bar */
+    /* Top Floating Controls Bar */
     .top-bar {
       position: fixed;
       top: 24px;
@@ -181,193 +172,7 @@
       font-weight: 700;
     }
 
-    /* Main Showcase Content Container (Floats over scrubbing canvas) */
-    .showcase-scroll-wrapper {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 120px 24px 60px;
-      pointer-events: auto;
-    }
-
-    /* Featured Cinematic Showcase Section (Matches Reference Image) */
-    .cinematic-showcase-section {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-      margin-bottom: 70vh; /* Smooth spacing for sequence scrubbing */
-    }
-
-    /* Header: Eyebrow + Large Title */
-    .showcase-header {
-      text-align: left;
-    }
-
-    .showcase-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.5);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      display: block;
-    }
-
-    .showcase-title {
-      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
-      font-weight: 800;
-      line-height: 1.04;
-      letter-spacing: -0.035em;
-      color: #ffffff;
-    }
-
-    /* Center Mockup Container with Glow */
-    .showcase-mockup-container {
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 12px 0 20px;
-    }
-
-    .mockup-glow-ambient {
-      position: absolute;
-      width: 75%;
-      height: 75%;
-      background: radial-gradient(circle, rgba(0, 210, 255, 0.22) 0%, rgba(0, 100, 220, 0.08) 55%, transparent 75%);
-      filter: blur(50px);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .mockup-glass-frame {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(12, 10, 16, 0.4);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 195, 255, 0.18);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
-    }
-
-    .mockup-glass-frame:hover {
-      transform: translateY(-4px) scale(1.01);
-      border-color: rgba(0, 245, 255, 0.45);
-      box-shadow: 0 35px 95px rgba(0, 0, 0, 0.9), 0 0 60px rgba(0, 245, 255, 0.3);
-    }
-
-    .mockup-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 19px;
-    }
-
-    /* Bottom Info Strip: Vedanth Information (Minimal & Clean) */
-    .showcase-footer-strip {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-top: 28px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      width: 100%;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .footer-strip-left {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .footer-strip-headline {
-      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-    }
-
-    .footer-strip-sub {
-      font-size: 0.96rem;
-      color: rgba(255, 255, 255, 0.55);
-      font-weight: 500;
-    }
-
-    .footer-strip-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .footer-contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: all 0.25s ease;
-    }
-
-    .footer-contact-link:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.3);
-      color: #ffffff;
-    }
-
-    .contact-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #00f5ff;
-      box-shadow: 0 0 6px #00f5ff;
-    }
-
-    .footer-action-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 26px;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #00f5ff, #0077ff);
-      color: #060608;
-      font-weight: 800;
-      font-size: 0.88rem;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(0, 245, 255, 0.35);
-      transition: all 0.25s ease;
-    }
-
-    .footer-action-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 245, 255, 0.6);
-    }
-
-    .btn-arrow {
-      font-size: 1rem;
-      transition: transform 0.2s ease;
-    }
-
-    .footer-action-btn:hover .btn-arrow {
-      transform: translateX(3px);
-    }
-
-    /* Bottom Floating Scroll Hint */
+    /* Floating Scroll Instruction Pill at Bottom */
     .scroll-hint {
       position: fixed;
       bottom: 28px;
@@ -406,98 +211,12 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(4px); }
     }
-
-    /* End Gateway: Next to 3D Particle Cloud */
-    .end-gateway-card {
-      margin-top: 100vh;
-      margin-bottom: 40px;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .btn-gateway {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      width: 100%;
-      padding: 24px 32px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 245, 255, 0.1) 100%);
-      border: 1px solid rgba(0, 245, 255, 0.3);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      text-decoration: none;
-      color: #ffffff;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .btn-gateway:hover {
-      transform: translateY(-4px);
-      border-color: #00f5ff;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 245, 255, 0.35);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(0, 245, 255, 0.2) 100%);
-    }
-
-    .gateway-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #00f5ff;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .gateway-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -0.01em;
-    }
-
-    .gateway-arrow {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #00f5ff;
-      color: #060608;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      font-weight: 800;
-      flex-shrink: 0;
-      transition: transform 0.25s ease;
-    }
-
-    .btn-gateway:hover .gateway-arrow {
-      transform: translateX(4px);
-    }
-
-    @media (max-width: 768px) {
-      .showcase-scroll-wrapper {
-        padding: 100px 18px 40px;
-      }
-      .showcase-footer-strip {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .footer-strip-right {
-        width: 100%;
-        justify-content: space-between;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Fixed Fullscreen Frame Scrubber Canvas -->
+  <!-- Fullscreen Frame Scrubber Canvas -->
   <canvas id="scrollCanvas"></canvas>
-  <div class="canvas-overlay-tint"></div>
 
   <!-- Top Progress Bar (Clickable to jump) -->
   <div class="progress-bar-wrap" id="progressWrap" title="Click anywhere to jump in sequence">
@@ -517,61 +236,9 @@
     </div>
   </header>
 
-  <!-- Main Scrollable Content Overlay -->
-  <div class="showcase-scroll-wrapper">
-
-    <!-- Featured Section (Matches User Reference Image) -->
-    <section class="cinematic-showcase-section">
-      <!-- Top Title Group -->
-      <div class="showcase-header">
-        <span class="showcase-eyebrow">LANDING PAGE CONCEPT</span>
-        <h1 class="showcase-title">Cinematic Ocean<br>Exploration UI</h1>
-      </div>
-
-      <!-- Center Transparent Mockup Card -->
-      <div class="showcase-mockup-container">
-        <div class="mockup-glow-ambient"></div>
-        <div class="mockup-glass-frame">
-          <img src="ocean_mockup.png" alt="Cinematic Ocean Exploration UI Mockup" class="mockup-image">
-        </div>
-      </div>
-
-      <!-- Bottom Vedanth Info Strip (Minimal & Clean) -->
-      <div class="showcase-footer-strip">
-        <div class="footer-strip-left">
-          <h2 class="footer-strip-headline">Vedanth Paspulwar</h2>
-          <p class="footer-strip-sub">Frontend &amp; C++ Systems Developer • B.Tech CSE</p>
-        </div>
-
-        <div class="footer-strip-right">
-          <a href="mailto:paspulwarvedanth5@gmail.com" class="footer-contact-link">
-            <span class="contact-dot"></span>
-            <span>paspulwarvedanth5@gmail.com</span>
-          </a>
-          <a href="https://wa.me/917385038223" target="_blank" rel="noopener noreferrer" class="footer-action-btn">
-            <span>Get in touch</span>
-            <span class="btn-arrow">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- End Gateway: Next to 3D Particle Cloud -->
-    <div class="end-gateway-card">
-      <a href="particles.html" class="btn-gateway">
-        <div>
-          <span class="gateway-tag">// NEXT EXPERIENCE</span>
-          <h3 class="gateway-title">Interactive 3D Particle Cloud</h3>
-        </div>
-        <span class="gateway-arrow">→</span>
-      </a>
-    </div>
-
-  </div>
-
   <!-- Scroll Hint Pill -->
   <div class="scroll-hint" id="scrollHint">
-    <span>Scroll down to play 300-frame sequence</span>
+    <span>Scroll or Drag down to play sequence</span>
     <span class="scroll-icon">↓</span>
   </div>
 
@@ -603,6 +270,7 @@
         for (let i = 0; i < TOTAL_FRAMES; i++) {
           const img = new Image();
           img.onload = () => {
+            // If this is the current target frame, render immediately
             if (Math.round(currentFrame) === i) {
               render(i);
             }
@@ -611,7 +279,7 @@
           frames[i] = img;
         }
 
-        // Render frame 0 immediately
+        // Render frame 0 as soon as it loads
         if (frames[0]) {
           if (frames[0].complete && frames[0].naturalWidth > 0) {
             render(0);
@@ -635,7 +303,7 @@
           return img;
         }
 
-        // Search closest loaded neighbor to prevent flicker
+        // Search closest loaded neighbor to prevent blank/flicker
         for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
           const prev = idx - offset;
           if (prev >= 0 && frames[prev]?.complete && frames[prev]?.naturalWidth > 0) {
@@ -715,7 +383,7 @@
         }
       }
 
-      // Smooth Lerp Animation Loop (60+ FPS)
+      // Smooth Lerp Animation Loop (Buttery 60+ FPS)
       function tick() {
         const diff = targetFrame - currentFrame;
         if (Math.abs(diff) > 0.001) {
@@ -743,13 +411,35 @@
         });
       }
 
-      // Keyboard Controls
+      // Keyboard Controls (Arrow keys, Space, PageUp/Down)
       window.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
           window.scrollBy({ top: 180, behavior: 'smooth' });
         } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
           window.scrollBy({ top: -180, behavior: 'smooth' });
         }
+      });
+
+      // Mouse drag scrub support
+      let isDragging = false;
+      let startY = 0;
+      let startScroll = 0;
+
+      window.addEventListener('mousedown', (e) => {
+        if (e.target.closest('a') || e.target.closest('#progressWrap')) return;
+        isDragging = true;
+        startY = e.clientY;
+        startScroll = window.pageYOffset || document.documentElement.scrollTop;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const delta = (startY - e.clientY) * 2.5;
+        window.scrollTo({ top: startScroll + delta });
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
       });
 
       window.addEventListener('resize', resize, { passive: true });
