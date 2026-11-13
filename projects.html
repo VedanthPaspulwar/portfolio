@@ -1736,6 +1736,211 @@
     }
 
 
+    /* ============================================
+       TREE REVEAL — Cursor Spotlight Section
+       ============================================ */
+    .tree-reveal-section {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+    }
+
+    .tree-reveal-card {
+      position: relative;
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: none;
+      /* Thin border visible at all times */
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .tree-reveal-inner {
+      position: relative;
+      width: 100%;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Tree image — multiply blend removes white bg on dark surface */
+    .tree-reveal-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      mix-blend-mode: multiply;
+      opacity: 0.08;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .tree-reveal-card:hover .tree-reveal-img {
+      opacity: 0;
+    }
+
+    /* Spotlight follows cursor — reveals image */
+    .tree-spotlight {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      /* Default: fully hidden — JS updates the radial gradient */
+      background: radial-gradient(circle 0px at 50% 50%, transparent 0%, #0f0b0c 100%);
+      transition: background 0.05s linear;
+    }
+
+    /* The image revealed by spotlight */
+    .tree-spotlight-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    /* Content that shows inside spotlight */
+    .tree-reveal-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      /* Fades in when hovering */
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    .tree-reveal-card:hover .tree-reveal-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tree-reveal-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(166, 255, 0, 0.8);
+      border: 1px solid rgba(166, 255, 0, 0.2);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      background: rgba(166, 255, 0, 0.06);
+    }
+
+    .tree-reveal-name {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: #ffffff;
+    }
+
+    .tree-reveal-name span {
+      color: #a6ff00;
+    }
+
+    .tree-reveal-role {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 500;
+    }
+
+    .tree-reveal-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .tree-skill-badge {
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    .tree-reveal-contacts {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .tree-contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .tree-contact-link:hover {
+      color: #a6ff00;
+    }
+
+    /* Custom cursor glow dot inside card */
+    .tree-cursor-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(166, 255, 0, 0.6);
+      box-shadow: 0 0 24px 8px rgba(166, 255, 0, 0.35);
+      pointer-events: none;
+      z-index: 20;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s;
+      opacity: 0;
+    }
+
+    /* Hint label at bottom */
+    .tree-hover-hint {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.1em;
+      z-index: 10;
+      transition: opacity 0.3s;
+    }
+
+    .tree-reveal-card:hover .tree-hover-hint {
+      opacity: 0;
+    }
+
     @media (max-width: 900px) {
       .btn-next-page {
         flex-direction: column;
@@ -2058,6 +2263,60 @@
           <span class="status-badge progress">Sprint</span>
         </div>
       </div>
+
+      <!-- Tree Reveal Interactive Section -->
+      </div><!-- close precision-section -->
+
+      <section class="tree-reveal-section">
+        <div class="tree-reveal-card" id="treeRevealCard">
+          <div class="tree-reveal-inner">
+
+            <!-- Faint base layer (always visible at low opacity) -->
+            <img src="tree-reveal.jpg" class="tree-reveal-img" alt="Knowledge Tree" draggable="false">
+
+            <!-- Layer revealed by cursor spotlight -->
+            <img src="tree-reveal.jpg" class="tree-spotlight-img" alt="Knowledge Tree Spotlight" draggable="false">
+
+            <!-- Spotlight mask overlay -->
+            <div class="tree-spotlight" id="treeSpotlight"></div>
+
+            <!-- Custom cursor dot -->
+            <div class="tree-cursor-dot" id="treeCursorDot"></div>
+
+            <!-- Content shown on hover -->
+            <div class="tree-reveal-content">
+              <span class="tree-reveal-tag">// VEDANTH.DEV — 2026</span>
+              <h2 class="tree-reveal-name">Vedanth<br><span>Paspulwar</span></h2>
+              <p class="tree-reveal-role">B.Tech CSE • C++ Systems Developer • Frontend Engineer</p>
+
+              <div class="tree-reveal-skills">
+                <span class="tree-skill-badge">C / C++</span>
+                <span class="tree-skill-badge">DSA & Algorithms</span>
+                <span class="tree-skill-badge">POSIX Systems</span>
+                <span class="tree-skill-badge">Tailwind CSS</span>
+                <span class="tree-skill-badge">HTML / JS</span>
+                <span class="tree-skill-badge">Hackathon Sprints</span>
+              </div>
+
+              <div class="tree-reveal-contacts">
+                <a href="mailto:paspulwarvedanth5@gmail.com" class="tree-contact-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                  paspulwarvedanth5@gmail.com
+                </a>
+                <a href="tel:+917385038223" class="tree-contact-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  +91 73850 38223
+                </a>
+              </div>
+            </div>
+
+            <!-- Hover hint -->
+            <div class="tree-hover-hint">✦ &nbsp; hover to reveal &nbsp; ✦</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="precision-section" style="margin-top:0; padding-top:0;">
 
       <!-- Card 3: System OS Dashboard Window (Reference Mockup) -->
       <div class="os-dash-window">
@@ -2465,6 +2724,8 @@
 
       </div>
 
+      </section><!-- close precision-section (OS Dashboard etc.) -->
+
       <!-- Next Experience Gateway: 3D Particle Cloud -->
       <div class="next-page-gateway">
         <a href="particles.html" class="btn-next-page">
@@ -2790,6 +3051,50 @@
         el.textContent = prompts[0];
       }
     }
+  </script>
+
+  <!-- Tree Reveal Cursor Spotlight Script -->
+  <script>
+    (function () {
+      const card     = document.getElementById('treeRevealCard');
+      const spotlight = document.getElementById('treeSpotlight');
+      const cursorDot = document.getElementById('treeCursorDot');
+
+      if (!card || !spotlight || !cursorDot) return;
+
+      const RADIUS = 160; // spotlight radius in px
+
+      card.addEventListener('mouseenter', () => {
+        cursorDot.style.opacity = '1';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '0';
+        // Collapse spotlight on leave
+        spotlight.style.background =
+          `radial-gradient(circle 0px at 50% 50%, transparent 0%, #0f0b0c 100%)`;
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Move custom cursor dot
+        cursorDot.style.left  = x + 'px';
+        cursorDot.style.top   = y + 'px';
+
+        // Expand radial gradient spotlight at cursor position
+        // The spotlight div sits on top of the spotlight-img and uses the
+        // gradient to MASK (cut a hole in the dark overlay), revealing the image
+        spotlight.style.background =
+          `radial-gradient(circle ${RADIUS}px at ${x}px ${y}px,
+            transparent 0%,
+            transparent 35%,
+            rgba(15,11,12,0.6) 65%,
+            #0f0b0c 100%)`;
+      });
+    })();
   </script>
 </body>
 </html>
